@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0b0c">
+<meta name="description" content="Data, AI and tech news, explained clearly and sourced. Three posts a week by Hamza El Alami.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog Hamza El Alami">
+<meta property="og:description" content="Data, AI and tech news, explained clearly and sourced. Three posts a week.">
+<style>html{background:#0a0b0c}</style>
+<title>Blog Hamza El Alami</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column. Live cadence strip highlights today's topic, about card, searchable post index, then a post view with progress bar and numbered sources. Tokens mirror hamzaelchen.github.io. */
+:root {
+  --bg: #0a0b0c;
+  --surface: #111314;
+  --surface-2: #171a1b;
+  --line: rgba(236,236,230,.10);
+  --line-2: rgba(236,236,230,.22);
+  --text: #ecece6;
+  --body: #d4d5ce;
+  --dim: #a3a49d;
+  --mute: #85867f;
+  --accent: #d4ff3a;
+  --accent-soft: rgba(212,255,58,.09);
+  --on-accent: #0a0b0c;
+  --sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --r-box: 18px;
+  --r-pill: 999px;
+  --ease: cubic-bezier(.23,1,.32,1);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans);
+  padding-block: 0 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 10; }
+a { color: inherit; }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 860px; margin: 0 auto; }
+.progress { position: fixed; left: 0; top: env(safe-area-inset-top, 0px); height: 3px; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: var(--accent); z-index: 11; pointer-events: none; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(212,255,58,.55); } 100% { box-shadow: 0 0 0 9px rgba(212,255,58,0); } }
+.reveal { animation: rise .65s var(--ease) both; animation-delay: calc(var(--i, 0) * 70ms); }
+
+/* header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.brand { font-weight: 500; letter-spacing: -.01em; font-size: 15px; background: none; border: 0; cursor: pointer; padding: 0; display: inline-flex; align-items: center; gap: 10px; text-align: left; }
+.brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-out infinite; flex: none; }
+.brand span.r { color: var(--mute); font-weight: 400; }
+.nav { display: flex; align-items: center; gap: 16px; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.nav a { color: var(--dim); text-decoration: none; transition: color .2s; }
+.nav a:hover { color: var(--text); }
+.lang-wrap { display: inline-flex; align-items: center; gap: 10px; }
+.lang-hint { color: var(--mute); }
+.lang { display: inline-flex; border: 1px solid var(--line-2); border-radius: var(--r-pill); padding: 3px; gap: 2px; position: relative; }
+.lang button { background: none; border: 0; border-radius: var(--r-pill); padding: 6px 12px; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; color: var(--dim); cursor: pointer; transition: background .25s var(--ease), color .25s var(--ease); }
+.lang button:hover { color: var(--text); }
+.lang button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+@media (max-width: 480px) { .lang-hint { display: none; } }
+
+/* hero */
+.hero { padding-block: clamp(40px, 8vw, 80px) 28px; display: flex; flex-direction: column; gap: 22px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pill { color: var(--accent); border: 1px solid var(--accent); border-radius: var(--r-pill); padding: 4px 11px; }
+h1 { margin: 0; font-weight: 500; font-size: clamp(38px, 8.4vw, 74px); letter-spacing: -.045em; line-height: 1; text-wrap: balance; }
+h1 .hl { color: var(--accent); }
+.lede { margin: 0; color: var(--dim); font-size: clamp(16px, 2.2vw, 19px); line-height: 1.55; max-width: 56ch; }
+.nextline { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); display: flex; gap: 10px; align-items: center; }
+.nextline b { color: var(--accent); font-weight: 500; }
+.cadence { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line-2); border-radius: var(--r-box); overflow: hidden; background: var(--surface); }
+.cadence div { padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid var(--line); min-width: 0; transition: background .3s var(--ease); position: relative; }
+.cadence div:last-child { border-right: 0; }
+.cadence .d { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); }
+.cadence .t { font-size: 15px; line-height: 1.35; color: var(--text); }
+.cadence div.on { background: var(--accent-soft); }
+.cadence div.on .d { color: var(--accent); }
+.cadence div.next .d { color: var(--accent); }
+.cadence div:hover { background: var(--surface-2); }
+@media (max-width: 520px) { .cadence { grid-template-columns: 1fr; } .cadence div { border-right: 0; border-bottom: 1px solid var(--line); } .cadence div:last-child { border-bottom: 0; } }
+
+/* marketing hero: CTA row, proof strip, live "latest post" card */
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.btn-main { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: var(--r-pill); background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); font-weight: 500; font-size: 15.5px; letter-spacing: -.01em; cursor: pointer; transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+.btn-main:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(212,255,58,.55); }
+.btn-main .ar { transition: transform .25s var(--ease); }
+.btn-main:hover .ar { transform: translateX(4px); }
+.btn-ghost { display: inline-flex; align-items: center; padding: 14px 22px; border-radius: var(--r-pill); background: none; border: 1px solid var(--line-2); font-size: 15.5px; color: var(--text); cursor: pointer; transition: border-color .2s, background .2s; }
+.btn-ghost:hover { border-color: var(--accent); background: var(--surface); }
+.proof { display: flex; gap: 10px 28px; flex-wrap: wrap; padding-top: 6px; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+.proof span { display: inline-flex; align-items: center; gap: 8px; }
+.proof span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.latest { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px 18px; align-items: center; text-align: left; width: 100%; padding: 18px 20px; border: 1px solid var(--line-2); border-radius: var(--r-box); background: var(--surface); cursor: pointer; transition: border-color .25s, background .25s var(--ease); }
+.latest:hover { border-color: var(--accent); background: var(--surface-2); }
+.latest .new { font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; background: var(--accent); color: var(--on-accent); border-radius: var(--r-pill); padding: 4px 10px; }
+.latest .lt { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.latest .lt b { font-weight: 500; font-size: clamp(17px, 2.6vw, 21px); letter-spacing: -.02em; line-height: 1.2; }
+.latest .lt i { font-style: normal; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--mute); }
+.latest .go2 { font-family: var(--mono); color: var(--accent); transition: transform .25s var(--ease); }
+.latest:hover .go2 { transform: translateX(4px); }
+@media (max-width: 560px) { .latest { grid-template-columns: minmax(0, 1fr) auto; } .latest .new { grid-column: 1 / -1; justify-self: start; } }
+.how-label { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); padding-top: 8px; }
+
+/* list */
+.sec-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-block: 34px 14px; font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--line-2); }
+.tools { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; padding-block: 16px; }
+.search { flex: 1 1 220px; min-width: 0; background: var(--surface); border: 1px solid var(--line-2); border-radius: var(--r-pill); padding: 10px 16px; font-size: 14.5px; transition: border-color .2s; }
+.search::placeholder { color: var(--mute); }
+.search:focus { border-color: var(--accent); outline: none; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { background: none; border: 1px solid var(--line-2); border-radius: var(--r-pill); padding: 7px 13px; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--dim); cursor: pointer; transition: border-color .2s, color .2s, background .2s; }
+.chip:hover { border-color: var(--accent); color: var(--text); }
+.chip[aria-pressed="true"] { border-color: var(--accent); color: var(--on-accent); background: var(--accent); }
+.list { display: flex; flex-direction: column; }
+.item { display: grid; grid-template-columns: 112px minmax(0, 1fr) 28px; gap: 8px 24px; padding: 26px 8px; margin-inline: -8px; border: 0; border-bottom: 1px solid var(--line); text-align: left; background: none; cursor: pointer; width: calc(100% + 16px); border-radius: 12px; transition: background .3s var(--ease); }
+.item:hover { background: var(--surface); }
+.item:hover .it-title { color: var(--accent); }
+.item:hover .go { transform: translateX(4px); color: var(--accent); }
+.it-meta { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--mute); display: flex; flex-direction: column; gap: 6px; padding-top: 5px; }
+.it-meta .tg { color: var(--accent); text-transform: uppercase; letter-spacing: .1em; }
+.it-body { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.it-title { font-size: clamp(22px, 3.4vw, 30px); font-weight: 500; letter-spacing: -.03em; line-height: 1.12; transition: color .2s; text-wrap: balance; }
+.it-sum { color: var(--dim); font-size: 15.5px; line-height: 1.55; max-width: 62ch; }
+.it-foot { font-family: var(--mono); font-size: 12px; color: var(--mute); letter-spacing: .06em; }
+.go { font-family: var(--mono); color: var(--mute); transition: transform .3s var(--ease), color .2s; padding-top: 4px; }
+@media (max-width: 600px) { .item { grid-template-columns: minmax(0, 1fr) 20px; } .it-meta { grid-column: 1 / -1; flex-direction: row; gap: 14px; padding-top: 0; } .go { grid-column: 2; grid-row: 2; } .it-body { grid-column: 1; grid-row: 2; } }
+.empty { padding-block: 40px; color: var(--mute); font-family: var(--mono); font-size: 13px; }
+
+/* post */
+.back { display: inline-flex; align-items: center; gap: 8px; margin-block: 28px 8px; background: none; border: 0; padding: 6px 0; cursor: pointer; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); transition: color .2s; }
+.back:hover { color: var(--accent); }
+.post-head { display: flex; flex-direction: column; gap: 20px; padding-block: 16px 30px; border-bottom: 1px solid var(--line-2); }
+.post-head h1 { font-size: clamp(32px, 6.4vw, 56px); letter-spacing: -.04em; line-height: 1.04; }
+.post-meta { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); display: flex; gap: 8px 16px; flex-wrap: wrap; align-items: center; }
+.post-meta .tg { color: var(--accent); }
+.prose { max-width: 66ch; padding-block: 34px 10px; display: flex; flex-direction: column; gap: 20px; }
+.prose p { margin: 0; font-size: 17.5px; line-height: 1.7; color: var(--body); }
+.prose h2 { margin: 20px 0 0; font-weight: 500; font-size: clamp(24px, 4vw, 31px); letter-spacing: -.03em; line-height: 1.15; display: flex; align-items: baseline; gap: 12px; }
+.prose h2::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex: none; transform: translateY(-1px); }
+.prose ul { margin: 0; padding-left: 1.15em; display: flex; flex-direction: column; gap: 10px; font-size: 17.5px; line-height: 1.6; color: var(--body); }
+.prose li::marker { color: var(--accent); }
+.prose sup a { color: var(--accent); text-decoration: none; font-family: var(--mono); font-size: .72em; padding-inline: 1px; }
+.sources { margin-top: 34px; border: 1px solid var(--line-2); border-radius: var(--r-box); background: var(--surface); padding: 22px clamp(16px, 4vw, 28px); display: flex; flex-direction: column; gap: 14px; }
+.sources h2 { margin: 0; font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.sources ol { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; }
+.sources li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 4px; padding-block: 12px; border-top: 1px solid var(--line); }
+.sources li:first-child { border-top: 0; }
+.sources .n { font-family: var(--mono); font-size: 12px; color: var(--mute); padding-top: 3px; }
+.sources a { font-size: 15.5px; line-height: 1.4; color: var(--text); text-decoration-color: var(--line-2); text-underline-offset: 3px; overflow-wrap: anywhere; }
+.sources a:hover { text-decoration-color: var(--accent); color: var(--accent); }
+.sources .pub { display: block; font-family: var(--mono); font-size: 12px; color: var(--mute); margin-top: 3px; letter-spacing: .04em; }
+.cta { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: var(--r-pill); font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--accent); color: var(--accent); background: none; cursor: pointer; transition: background .2s, color .2s; }
+.btn:hover { background: var(--accent); color: var(--on-accent); }
+
+footer { margin-top: 64px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--mute); }
+footer a { color: var(--dim); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="wrap">
+  <header class="top">
+    <button class="brand" id="home" type="button"><span class="dot" aria-hidden="true"></span><span>Hamza El Alami <span class="r" id="role"></span></span></button>
+    <nav class="nav" aria-label="Navigation">
+      <a href="https://hamzaelchen.github.io" target="_blank" rel="noopener">Portfolio</a>
+      <span class="lang-wrap">
+        <span class="lang-hint" id="lang-hint"></span>
+        <span class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+        </span>
+      </span>
+    </nav>
+  </header>
+  <main id="view"></main>
+  <footer>
+    <span id="foot-l"></span>
+    <span><a href="https://hamzaelchen.github.io" target="_blank" rel="noopener">hamzaelchen.github.io</a></span>
+  </footer>
+</div>
+
+<!-- Posts. Newest first. Add a new object at the top of the array. Each text field has fr and en. Blocks: h2, p, ul. Cite sources in text with [n]. -->
+<script type="application/json" id="posts">
+[
+  {
+    "id": "open-tables-any-engine",
+    "date": "2026-10-26",
+    "tag": { "fr": "Tendance data", "en": "Data trend" },
+    "minutes": 6,
+    "title": { "fr": "Tes tables, n'importe quel moteur.", "en": "Your tables, any engine." },
+    "summary": {
+      "fr": "En octobre, Databricks et Snowflake ont chacun livré des fonctions autour des formats de table ouverts. Ce qui s'est passé, ce qui reste du marketing, et ce que ça change pour un futur data engineer.",
+      "en": "In October, Databricks and Snowflake each shipped features built around open table formats. What happened, what is still marketing, and what it means for a future data engineer."
+    },
+    "body": {
+      "en": [
+        { "t": "p", "x": "For years, a table format was a way to keep your data inside one platform. In 2026, two of the biggest data platforms started doing the opposite: opening their tables to other engines. Here is what happened, what is still vendor marketing, and what it means for anyone learning data engineering." },
+        { "t": "h2", "x": "What happened, and when" },
+        { "t": "p", "x": "In March 2026, Snowflake announced support for Apache Iceberg v3, the latest version of the open table format. The announcement covered row lineage, the Variant type, deletion vectors, nanosecond timestamps, geometry and geography types, and default values.[3] Snowflake's release notes list general availability of that support on 7 May 2026.[4]" },
+        { "t": "p", "x": "In July, Databricks published a post saying that engines such as Apache Spark, Apache Flink, Starburst, DuckDB and StreamNative can create, read and write Unity Catalog managed tables. At that point, external access was a public preview.[5] The October release notes show how far it went. On 13 October, external writes to managed Delta tables from external Spark clients became generally available, together with external access to views through the Unity REST API.[1] On 14 October, transactions, which group several SQL statements into one atomic unit, became generally available for managed Delta and Iceberg tables in Unity Catalog.[1]" },
+        { "t": "p", "x": "Two days later, on 16 October, Snowflake moved the in-place upgrade of Iceberg tables from v2 to v3 to general availability. It is done with a single ALTER ICEBERG TABLE statement.[2]" },
+        { "t": "h2", "x": "Why it matters" },
+        { "t": "p", "x": "The pattern across these announcements is the same. The data sits in an open format, a catalog decides who may touch it, and several engines can work on the same table. Databricks says that its managed tables, stored as Delta or Iceberg, stay reachable from any engine while governance stays central in Unity Catalog.[5] Snowflake describes a REST catalog interface in its Horizon Catalog that lets outside engines read Iceberg tables. When that post was published, writing through the interface was in private preview, so check the current status before you rely on it.[3]" },
+        { "t": "p", "x": "The lock-in does not disappear. It moves. If the table format is open, the catalog and the governance rules become the place where a platform keeps its grip, which makes the choice of catalog as important as the choice of format. That last sentence is my reading, not a claim from either vendor." },
+        { "t": "h2", "x": "The details data engineers should know" },
+        { "t": "ul", "x": [
+          "Snowflake's v3 upgrade works for the tables it manages and for externally managed tables that use an Iceberg REST catalog.[2]",
+          "The upgrade is permanent. For Snowflake-managed tables you can restore the original v2 version with Time Travel, but only during the retention period. The note does not say the same for external tables.[2]",
+          "With default expressions, Snowflake writes only expressions that evaluate to a constant, such as PI(), into the Iceberg metadata. Others, such as CURRENT_DATE(), are evaluated only for writes made by Snowflake.[2]",
+          "On the Databricks side, cross-engine attribute-based access control reached general availability on 1 October, so external engines can read managed tables while the access policies are enforced.[1]",
+          "Iceberg 1.12.0 removes support for Spark 3.4 and Flink 2.0 and adds Flink 2.2 and 2.3. The v4 format is still at the foundation stage and should not go to production.[6]"
+        ] },
+        { "t": "h2", "x": "What the numbers say, and what they do not" },
+        { "t": "p", "x": "Databricks claims up to 50 percent storage savings and queries up to 20 times faster for Unity Catalog managed tables.[5] These figures come from Databricks itself, and I did not find an independent benchmark for them. Treat them as a hypothesis to test on your own workload." },
+        { "t": "h2", "x": "Before you upgrade" },
+        { "t": "p", "x": "Dremio's upgrade guide for Iceberg 1.12.0 gives a sensible order of work that applies to any table format change.[6]" },
+        { "t": "ul", "x": [
+          "Inventory every engine, client and table, and the features you actually use.",
+          "Look for position delete files that carry row data, using the position_deletes metadata table, before you upgrade.",
+          "Recompile custom code and test representative tables, including failure scenarios.",
+          "Roll out by risk level: readers first, then low-volume writers, then streaming jobs, then maintenance jobs.",
+          "Keep the library upgrade, the engine runtime upgrade and the table format version upgrade as three separate decisions."
+        ] },
+        { "t": "h2", "x": "My take as a future data engineer" },
+        { "t": "p", "x": "The skill that travels from one company to another is not one platform. It is the layer below: how an open table format stores its metadata, how a catalog hands out credentials, and how two engines avoid overwriting each other. A good exercise would be a small project that writes the same Iceberg table from two engines and reads it back from a third. It would show you what the product pages skip." },
+        { "t": "h2", "x": "Limits and open questions" },
+        { "t": "ul", "x": [
+          "Status varies by feature. The October Databricks notes mix generally available and beta items, so read each entry before you plan around it.[1]",
+          "The exact release date of Iceberg 1.12.0 comes from secondary sources. Dremio dates it to 30 September and a community newsletter says it was announced on 1 October.[6][7] I did not find an official announcement page.",
+          "The performance and savings figures are vendor claims, as explained above."
+        ] },
+        { "t": "h2", "x": "In short" },
+        { "t": "p", "x": "Open tables are no longer a side project. In mid-October, both Databricks and Snowflake shipped features built around open table formats. If you are learning data engineering, learn Iceberg, learn how catalogs work, and read the release note before you read the blog post." }
+      ],
+      "fr": [
+        { "t": "p", "x": "Pendant des années, le format de table a servi à garder tes données dans une seule plateforme. En 2026, deux des plus grandes plateformes data ont commencé à faire l'inverse : ouvrir leurs tables à d'autres moteurs. Voici ce qui s'est passé, ce qui reste du marketing d'éditeur, et ce que ça change pour qui apprend le data engineering." },
+        { "t": "h2", "x": "Ce qui s'est passé, et quand" },
+        { "t": "p", "x": "En mars 2026, Snowflake a annoncé la prise en charge d'Apache Iceberg v3, la dernière version du format de table ouvert. L'annonce couvrait le row lineage, le type Variant, les deletion vectors, les timestamps à la nanoseconde, les types géométrie et géographie, et les valeurs par défaut.[3] Les notes de version de Snowflake indiquent la disponibilité générale de ce support le 7 mai 2026.[4]" },
+        { "t": "p", "x": "En juillet, Databricks a publié un article expliquant que des moteurs comme Apache Spark, Apache Flink, Starburst, DuckDB et StreamNative peuvent créer, lire et écrire des tables gérées Unity Catalog. À ce moment, l'accès externe était en préversion publique.[5] Les notes de version d'octobre montrent la suite. Le 13 octobre, les écritures externes dans les tables Delta gérées depuis des clients Spark externes sont passées en disponibilité générale, avec l'accès externe aux vues via l'API REST Unity.[1] Le 14 octobre, les transactions, qui regroupent plusieurs instructions SQL en une unité atomique, sont passées en disponibilité générale pour les tables Delta et Iceberg gérées dans Unity Catalog.[1]" },
+        { "t": "p", "x": "Deux jours plus tard, le 16 octobre, Snowflake a fait passer en disponibilité générale la mise à niveau en place des tables Iceberg de la v2 vers la v3. Elle se fait avec une seule instruction ALTER ICEBERG TABLE.[2]" },
+        { "t": "h2", "x": "Pourquoi c'est important" },
+        { "t": "p", "x": "Le schéma est le même dans toutes ces annonces. Les données restent dans un format ouvert, un catalogue décide qui peut y toucher, et plusieurs moteurs peuvent travailler sur la même table. Databricks affirme que ses tables gérées, stockées en Delta ou en Iceberg, restent accessibles depuis n'importe quel moteur pendant que la gouvernance reste centralisée dans Unity Catalog.[5] Snowflake décrit une interface de catalogue REST dans son Horizon Catalog qui permet à des moteurs externes de lire les tables Iceberg. Quand cet article a été publié, l'écriture via cette interface était en préversion privée : vérifie le statut actuel avant de t'appuyer dessus.[3]" },
+        { "t": "p", "x": "Le verrouillage ne disparaît pas. Il se déplace. Si le format de table est ouvert, c'est le catalogue et les règles de gouvernance qui permettent à une plateforme de garder la main, ce qui rend le choix du catalogue aussi important que celui du format. Cette dernière phrase est mon interprétation, pas une affirmation de l'un des éditeurs." },
+        { "t": "h2", "x": "Les détails à connaître pour un data engineer" },
+        { "t": "ul", "x": [
+          "La mise à niveau v3 de Snowflake fonctionne pour les tables qu'il gère et pour les tables gérées en externe via un catalogue Iceberg REST.[2]",
+          "La mise à niveau est permanente. Pour les tables gérées par Snowflake, tu peux restaurer la version v2 d'origine avec Time Travel, mais seulement pendant la période de rétention. La note ne dit pas la même chose pour les tables externes.[2]",
+          "Pour les expressions par défaut, Snowflake n'écrit dans les métadonnées Iceberg que les expressions qui s'évaluent en une constante, comme PI(). Les autres, comme CURRENT_DATE(), ne sont évaluées que pour les écritures faites par Snowflake.[2]",
+          "Côté Databricks, le contrôle d'accès par attributs inter-moteurs est passé en disponibilité générale le 1er octobre : des moteurs externes peuvent lire les tables gérées pendant que les politiques d'accès sont appliquées.[1]",
+          "Iceberg 1.12.0 retire la prise en charge de Spark 3.4 et de Flink 2.0, et ajoute Flink 2.2 et 2.3. Le format v4 en est encore aux fondations et ne doit pas aller en production.[6]"
+        ] },
+        { "t": "h2", "x": "Ce que disent les chiffres, et ce qu'ils ne disent pas" },
+        { "t": "p", "x": "Databricks annonce jusqu'à 50 % d'économies de stockage et des requêtes jusqu'à 20 fois plus rapides pour les tables gérées Unity Catalog.[5] Ces chiffres viennent de Databricks lui-même, et je n'ai pas trouvé de benchmark indépendant pour les confirmer. Prends-les comme une hypothèse à tester sur ta propre charge de travail." },
+        { "t": "h2", "x": "Avant de mettre à jour" },
+        { "t": "p", "x": "Le guide de mise à jour d'Iceberg 1.12.0 publié par Dremio propose un ordre de travail raisonnable, valable pour tout changement de format de table.[6]" },
+        { "t": "ul", "x": [
+          "Faire l'inventaire de tous les moteurs, clients et tables, et des fonctions réellement utilisées.",
+          "Chercher les fichiers de suppression de position qui contiennent des données de ligne, avec la table de métadonnées position_deletes, avant la mise à jour.",
+          "Recompiler le code personnalisé et tester des tables représentatives, y compris les scénarios d'échec.",
+          "Déployer par niveau de risque : les lecteurs d'abord, puis les écrivains à faible volume, puis les jobs de streaming, puis les jobs de maintenance.",
+          "Garder la mise à jour de la bibliothèque, celle du runtime du moteur et celle de la version du format de table comme trois décisions séparées."
+        ] },
+        { "t": "h2", "x": "Mon avis de futur data engineer" },
+        { "t": "p", "x": "La compétence qui voyage d'une entreprise à l'autre n'est pas une plateforme. C'est la couche en dessous : comment un format de table ouvert stocke ses métadonnées, comment un catalogue distribue des identifiants d'accès, et comment deux moteurs évitent de s'écraser mutuellement. Un bon exercice serait un petit projet qui écrit la même table Iceberg depuis deux moteurs et la relit depuis un troisième. Il montrerait ce que les pages produit passent sous silence." },
+        { "t": "h2", "x": "Limites et questions ouvertes" },
+        { "t": "ul", "x": [
+          "Le statut varie selon la fonction. Les notes Databricks d'octobre mélangent des éléments en disponibilité générale et en bêta : lis chaque entrée avant de planifier autour.[1]",
+          "La date exacte de sortie d'Iceberg 1.12.0 vient de sources secondaires. Dremio la situe au 30 septembre et une newsletter communautaire parle d'une annonce le 1er octobre.[6][7] Je n'ai pas trouvé de page d'annonce officielle.",
+          "Les chiffres de performance et d'économies sont des affirmations d'éditeur, comme expliqué plus haut."
+        ] },
+        { "t": "h2", "x": "En bref" },
+        { "t": "p", "x": "Les tables ouvertes ne sont plus un sujet annexe. À la mi-octobre, Databricks et Snowflake ont tous deux livré des fonctions autour des formats de table ouverts. Si tu apprends le data engineering, apprends Iceberg, apprends comment fonctionnent les catalogues, et lis la note de version avant l'article de blog." }
+      ]
+    },
+    "sources": [
+      { "title": "Databricks release notes: October 2026", "publisher": "Databricks documentation", "date": "2026-10 (entries of 1, 13 and 14 Oct)", "url": "https://docs.databricks.com/aws/en/release-notes/product/2026/october" },
+      { "title": "October 16, 2026: Apache Iceberg v3 table upgrades and expression defaults (General availability)", "publisher": "Snowflake documentation", "date": "2026-10-16", "url": "https://docs.snowflake.com/en/release-notes/2026/other/2026-10-16-iceberg-v3-upgrade-expression-defaults-ga" },
+      { "title": "Announcing Apache Iceberg v3 Support on Snowflake", "publisher": "Snowflake blog", "date": "2026-03-04", "url": "https://www.snowflake.com/en/blog/apache-iceberg-v3-support/" },
+      { "title": "May 7, 2026: Support for Apache Iceberg version 3 (General availability)", "publisher": "Snowflake documentation", "date": "2026-05-07", "url": "https://docs.snowflake.com/en/release-notes/2026/other/2026-05-07-iceberg-v3-ga" },
+      { "title": "How Unity Catalog managed tables bring interoperability, performance and unified governance", "publisher": "Databricks blog", "date": "2026-07-16", "url": "https://www.databricks.com/blog/how-unity-catalog-managed-tables-bring-interoperability-performance-and-unified-governance" },
+      { "title": "Apache Iceberg 1.12.0: What's New, Breaking Changes, and Upgrade Guide", "publisher": "Dremio blog (secondary source)", "date": "2026 (covers the 30 Sep 2026 release)", "url": "https://www.dremio.com/blog/apache-iceberg-1-12-0-whats-new-breaking-changes-and-upgrade-guide/" },
+      { "title": "Apache Data Lakehouse Weekly: September 29 to October 7, 2026", "publisher": "DEV Community (community newsletter, secondary source)", "date": "2026-10 (week of 29 Sep to 7 Oct)", "url": "https://dev.to/alexmercedcoder/apache-data-lakehouse-weekly-september-29-to-october-7-2026-42im" }
+    ],
+    "carousel": ""
+  },
+  {
+    "id": "why-this-blog",
+    "date": "2026-10-26",
+    "tag": { "fr": "Édito", "en": "Intro" },
+    "minutes": 3,
+    "title": { "fr": "Pourquoi ce blog.", "en": "Why this blog." },
+    "summary": {
+      "fr": "Qui je suis, pourquoi la data et l'IA me passionnent, et ce que tu trouveras ici trois fois par semaine.",
+      "en": "Who I am, why data and AI fascinate me, and what you'll find here three times a week."
+    },
+    "body": {
+      "en": [
+        { "t": "p", "x": "Hi, I'm Hamza El Alami. I'm an engineering student at EMSI Casablanca, and I'm passionate about data and everything around it: collecting it, cleaning it, moving it, modeling it, and turning it into decisions people can trust." },
+        { "t": "h2", "x": "Who I am" },
+        { "t": "p", "x": "My studies cover deep learning, IoT architecture, data preprocessing and entrepreneurship. Most of my projects are built in teams with classmates. I speak Arabic, French and English, which is why this blog exists in more than one language." },
+        { "t": "h2", "x": "What drives me" },
+        { "t": "p", "x": "Data and AI are changing how every industry works, and I want to be one of the people who builds the systems behind that change. What fascinates me is not a single tool or a single model, but how the whole chain fits together, from raw data to a decision." },
+        { "t": "h2", "x": "What this blog is" },
+        { "t": "p", "x": "I publish three times a week. Each post covers a single topic, first as a short carousel on LinkedIn, then in a detailed version here." },
+        { "t": "ul", "x": [
+          "Monday: data, data engineering, cloud and the tools of the trade.",
+          "Wednesday: artificial intelligence news.",
+          "Friday: tech news and industry trends."
+        ] },
+        { "t": "h2", "x": "My rule on sources" },
+        { "t": "p", "x": "Every important fact points to a numbered source, listed at the bottom of the article with its publisher and date. I favor official announcements, engineering blogs, research papers and recognized specialist press. When something is unconfirmed, I say so." },
+        { "t": "h2", "x": "Read it in your language" },
+        { "t": "p", "x": "The site opens in English. Use the FR button at the top of the page to read everything in French, and EN to come back." }
+      ],
+      "fr": [
+        { "t": "p", "x": "Salut, je suis Hamza El Alami. Je suis étudiant ingénieur à l'EMSI Casablanca et je suis passionné par la data et tout ce qui l'entoure : la collecter, la nettoyer, la transporter, la modéliser et la transformer en décisions fiables." },
+        { "t": "h2", "x": "Qui je suis" },
+        { "t": "p", "x": "Mes études couvrent le deep learning, l'architecture IoT, le prétraitement des données et l'entrepreneuriat. La plupart de mes projets se font en équipe avec mes camarades. Je parle arabe, français et anglais, c'est pourquoi ce blog existe en plusieurs langues." },
+        { "t": "h2", "x": "Ce qui me motive" },
+        { "t": "p", "x": "La data et l'IA changent le fonctionnement de tous les secteurs, et je veux faire partie de ceux qui construisent les systèmes derrière ce changement. Ce qui me fascine, ce n'est pas un outil ou un modèle isolé, mais la façon dont toute la chaîne s'assemble, de la donnée brute jusqu'à la décision." },
+        { "t": "h2", "x": "Ce qu'est ce blog" },
+        { "t": "p", "x": "Je publie trois fois par semaine. Chaque publication traite un seul sujet, d'abord en carrousel court sur LinkedIn, puis en version détaillée ici." },
+        { "t": "ul", "x": [
+          "Lundi : data, data engineering, cloud et outils du métier.",
+          "Mercredi : actualité de l'intelligence artificielle.",
+          "Vendredi : actualité tech et tendances du secteur."
+        ] },
+        { "t": "h2", "x": "Ma règle sur les sources" },
+        { "t": "p", "x": "Chaque fait important renvoie à une source numérotée, listée en bas de l'article avec son éditeur et sa date. Je privilégie les communiqués officiels, les blogs d'ingénierie, les articles de recherche et la presse spécialisée reconnue. Quand une information n'est pas confirmée, je l'écris." },
+        { "t": "h2", "x": "À lire dans ta langue" },
+        { "t": "p", "x": "Le site s'ouvre en anglais. Utilise le bouton FR en haut de la page pour tout lire en français, et EN pour revenir." }
+      ]
+    },
+    "sources": [],
+    "carousel": ""
+  }
+]
+</script>
+
+<script>
+(function () {
+  var POSTS = JSON.parse(document.getElementById('posts').textContent);
+  var view = document.getElementById('view');
+  var progress = document.getElementById('progress');
+  var DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var UI = {
+    en: {
+      eyebrow: 'Data · AI · Tech', pill: 'New post 3× a week',
+      h1a: 'Stay ahead in data, AI and tech.', h1b: 'Clear. Sourced. Weekly.',
+      lede: 'Short carousels on LinkedIn, deep and sourced breakdowns here. Every Monday, Wednesday and Friday, one story that matters, explained for people who build.',
+      cta1: 'Read the latest post', cta2: 'About this blog',
+      proof: ['3 posts a week', 'Every claim linked to a source', 'English and French'],
+      newTag: 'New',
+      how: 'What you get each week',
+      cad: [[1, 'Monday', 'Data, cloud and the tools of the trade'], [3, 'Wednesday', 'AI news'], [5, 'Friday', 'Tech news and trends']],
+      today: "Today's topic", next: 'Next post',
+      latest: 'Latest posts', count: function (n) { return n + (n === 1 ? ' post' : ' posts'); },
+      all: 'All', search: 'Search posts', none: 'No posts match your search.',
+      back: 'All posts', min: ' min read', sources: 'Sources', carousel: 'View the LinkedIn carousel',
+      role: 'Data & AI Engineer.', foot: 'Hamza El Alami · Casablanca, Morocco', hint: 'Translate'
+    },
+    fr: {
+      eyebrow: 'Data · IA · Tech', pill: 'Nouvel article 3× par semaine',
+      h1a: "Garde une longueur d'avance en data, IA et tech.", h1b: 'Clair. Sourcé. Chaque semaine.',
+      lede: "Des carrousels courts sur LinkedIn, des analyses détaillées et sourcées ici. Chaque lundi, mercredi et vendredi, une actu qui compte, expliquée pour ceux qui construisent.",
+      cta1: "Lire le dernier article", cta2: 'À propos du blog',
+      proof: ['3 articles par semaine', 'Chaque affirmation reliée à sa source', 'Anglais et français'],
+      newTag: 'Nouveau',
+      how: 'Ce que tu reçois chaque semaine',
+      cad: [[1, 'Lundi', 'Data, cloud et outils du métier'], [3, 'Mercredi', "Actualité de l'IA"], [5, 'Vendredi', 'Actu tech et tendances']],
+      today: 'Sujet du jour', next: 'Prochain article',
+      latest: 'Derniers articles', count: function (n) { return n + (n > 1 ? ' articles' : ' article'); },
+      all: 'Tous', search: 'Rechercher un article', none: 'Aucun article ne correspond à ta recherche.',
+      back: 'Tous les articles', min: ' min de lecture', sources: 'Sources', carousel: 'Voir le carrousel LinkedIn',
+      role: 'Data & AI Engineer.', foot: 'Hamza El Alami · Casablanca, Maroc', hint: 'Traduire'
+    }
+  };
+  var state = { lang: 'en', post: null, tag: 'all', q: '' };
+  try { var sl = localStorage.getItem('hea-lang'); if (sl === 'en' || sl === 'fr') state.lang = sl; } catch (e) {}
+  try { var h = (location.hash || '').slice(1); if (h) state.post = h; } catch (e) {}
+
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  function L(o) { return o[state.lang] || o.en || o.fr; }
+  function fmtDate(iso) {
+    var d = new Date(iso + 'T12:00:00');
+    try { return d.toLocaleDateString(state.lang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) { return iso; }
+  }
+  function todayIdx() {
+    try {
+      var w = new Intl.DateTimeFormat('en-US', { weekday: 'short', timeZone: 'Africa/Casablanca' }).format(new Date());
+      return DAYS.indexOf(w);
+    } catch (e) { return new Date().getDay(); }
+  }
+  function nextPostDay(t) {
+    var td = todayIdx(), posting = [1, 3, 5];
+    if (posting.indexOf(td) >= 0) return { idx: td, today: true };
+    for (var i = 1; i <= 7; i++) { var d = (td + i) % 7; if (posting.indexOf(d) >= 0) return { idx: d, today: false }; }
+    return { idx: 1, today: false };
+  }
+  var seq = 0;
+  function rv(node) { node.classList.add('reveal'); node.style.setProperty('--i', seq++); return node; }
+
+  function renderChrome() {
+    var t = UI[state.lang];
+    document.documentElement.lang = state.lang;
+    document.getElementById('role').textContent = t.role;
+    document.getElementById('foot-l').textContent = t.foot;
+    document.getElementById('lang-hint').textContent = t.hint;
+    Array.prototype.forEach.call(document.querySelectorAll('.lang button'), function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === state.lang ? 'true' : 'false');
+    });
+  }
+
+  function renderIndex() {
+    var t = UI[state.lang]; seq = 0;
+    var keepFocus = document.activeElement && document.activeElement.id === 'q';
+    view.textContent = '';
+    progress.style.transform = 'scaleX(0)';
+    var hero = el('section', 'hero');
+    var eb = el('div', 'eyebrow'); eb.appendChild(el('span', null, t.eyebrow)); eb.appendChild(el('span', 'pill', t.pill)); hero.appendChild(rv(eb));
+    var h1 = el('h1'); h1.appendChild(document.createTextNode(t.h1a + ' ')); h1.appendChild(el('span', 'hl', t.h1b)); hero.appendChild(rv(h1));
+    hero.appendChild(rv(el('p', 'lede', t.lede)));
+
+    var ctas = el('div', 'ctas');
+    var bm = el('button', 'btn-main'); bm.type = 'button'; bm.appendChild(document.createTextNode(t.cta1 + ' ')); bm.appendChild(el('span', 'ar', '→'));
+    bm.addEventListener('click', function () { if (POSTS.length) openPost(POSTS[0].id); });
+    var bg = el('button', 'btn-ghost', t.cta2); bg.type = 'button';
+    bg.addEventListener('click', function () { openPost('why-this-blog'); });
+    ctas.appendChild(bm); ctas.appendChild(bg); hero.appendChild(rv(ctas));
+    var proof = el('div', 'proof'); t.proof.forEach(function (x) { proof.appendChild(el('span', null, x)); }); hero.appendChild(rv(proof));
+    if (POSTS.length) {
+      var lp = POSTS[0];
+      var lb = el('button', 'latest'); lb.type = 'button';
+      var lt = el('span', 'lt'); lt.appendChild(el('b', null, L(lp.title))); lt.appendChild(el('i', null, L(lp.tag) + ' · ' + fmtDate(lp.date) + ' · ' + lp.minutes + t.min));
+      lb.appendChild(el('span', 'new', t.newTag)); lb.appendChild(lt); lb.appendChild(el('span', 'go2', '→'));
+      lb.addEventListener('click', function () { openPost(lp.id); });
+      hero.appendChild(rv(lb));
+    }
+    hero.appendChild(rv(el('div', 'how-label', t.how)));
+
+    var np = nextPostDay(t);
+    var nl = el('div', 'nextline');
+    var nm = ''; t.cad.forEach(function (c) { if (c[0] === np.idx) nm = c[1]; });
+    nl.appendChild(el('span', null, np.today ? t.today : t.next)); nl.appendChild(el('b', null, nm));
+    hero.appendChild(rv(nl));
+    var cad = el('div', 'cadence');
+    t.cad.forEach(function (c) {
+      var d = el('div'); if (c[0] === np.idx) d.className = np.today ? 'on' : 'next';
+      d.appendChild(el('span', 'd', c[1])); d.appendChild(el('span', 't', c[2])); cad.appendChild(d);
+    });
+    hero.appendChild(rv(cad));
+    view.appendChild(hero);
+
+    var tags = [];
+    POSTS.forEach(function (p) { var k = L(p.tag); if (tags.indexOf(k) < 0) tags.push(k); });
+    var q = state.q.trim().toLowerCase();
+    var shown = POSTS.filter(function (p) {
+      if (state.tag !== 'all' && L(p.tag) !== state.tag) return false;
+      if (!q) return true;
+      return (L(p.title) + ' ' + L(p.summary) + ' ' + L(p.tag)).toLowerCase().indexOf(q) >= 0;
+    });
+
+    var lab = el('div', 'sec-label'); lab.appendChild(el('span', null, t.latest)); var cnt = el('span', null, t.count(shown.length)); cnt.id = 'cnt'; lab.appendChild(cnt); view.appendChild(rv(lab));
+    var tools = el('div', 'tools');
+    var inp = el('input', 'search'); inp.type = 'search'; inp.id = 'q'; inp.placeholder = t.search; inp.setAttribute('aria-label', t.search); inp.value = state.q;
+    tools.appendChild(inp);
+    if (tags.length > 1) {
+      var f = el('div', 'filters');
+      [['all', t.all]].concat(tags.map(function (k) { return [k, k]; })).forEach(function (pair) {
+        var b = el('button', 'chip', pair[1]); b.type = 'button'; b.setAttribute('aria-pressed', state.tag === pair[0] ? 'true' : 'false');
+        b.addEventListener('click', function () { state.tag = pair[0]; renderIndex(); });
+        f.appendChild(b);
+      });
+      tools.appendChild(f);
+    }
+    view.appendChild(rv(tools));
+    var list = el('div', 'list'); list.id = 'list';
+    view.appendChild(list);
+    fillList(list, shown, t);
+    inp.addEventListener('input', function () {
+      state.q = inp.value; var qq = state.q.trim().toLowerCase();
+      var s2 = POSTS.filter(function (p) {
+        if (state.tag !== 'all' && L(p.tag) !== state.tag) return false;
+        if (!qq) return true;
+        return (L(p.title) + ' ' + L(p.summary) + ' ' + L(p.tag)).toLowerCase().indexOf(qq) >= 0;
+      });
+      document.getElementById('cnt').textContent = t.count(s2.length);
+      fillList(list, s2, t);
+    });
+    if (keepFocus) { inp.focus(); }
+  }
+
+  function fillList(list, shown, t) {
+    list.textContent = '';
+    if (!shown.length) { list.appendChild(el('div', 'empty', t.none)); return; }
+    shown.forEach(function (p) {
+      var it = el('button', 'item'); it.type = 'button'; rv(it);
+      var meta = el('div', 'it-meta'); meta.appendChild(el('span', 'tg', L(p.tag))); meta.appendChild(el('span', null, fmtDate(p.date)));
+      var body = el('div', 'it-body');
+      body.appendChild(el('span', 'it-title', L(p.title)));
+      body.appendChild(el('span', 'it-sum', L(p.summary)));
+      body.appendChild(el('span', 'it-foot', p.minutes + t.min));
+      it.appendChild(meta); it.appendChild(body); it.appendChild(el('span', 'go', '→'));
+      it.addEventListener('click', function () { openPost(p.id); });
+      list.appendChild(it);
+    });
+  }
+
+  function cites(parent, text) {
+    var re = /\[(\d+)\]/g, last = 0, m;
+    while ((m = re.exec(text))) {
+      if (m.index > last) parent.appendChild(document.createTextNode(text.slice(last, m.index)));
+      var sup = el('sup'); var a = el('a', null, '[' + m[1] + ']'); a.href = '#src-' + m[1];
+      a.addEventListener('click', (function (n) { return function (e) { e.preventDefault(); var x = document.getElementById('src-' + n); if (x) x.scrollIntoView({ behavior: 'smooth', block: 'center' }); }; })(m[1]));
+      sup.appendChild(a); parent.appendChild(sup);
+      last = re.lastIndex;
+    }
+    if (last < text.length) parent.appendChild(document.createTextNode(text.slice(last)));
+  }
+
+  function renderPost(p) {
+    var t = UI[state.lang]; seq = 0;
+    view.textContent = '';
+    var back = el('button', 'back', '← ' + t.back); back.type = 'button'; back.addEventListener('click', goHome); view.appendChild(rv(back));
+    var head = el('header', 'post-head');
+    var meta = el('div', 'post-meta'); meta.appendChild(el('span', 'tg', L(p.tag))); meta.appendChild(el('span', null, fmtDate(p.date))); meta.appendChild(el('span', null, p.minutes + t.min)); head.appendChild(meta);
+    head.appendChild(el('h1', null, L(p.title)));
+    head.appendChild(el('p', 'lede', L(p.summary)));
+    view.appendChild(rv(head));
+    var prose = el('article', 'prose');
+    L(p.body).forEach(function (b) {
+      if (b.t === 'h2') prose.appendChild(el('h2', null, b.x));
+      else if (b.t === 'ul') { var ul = el('ul'); b.x.forEach(function (i) { var li = el('li'); cites(li, i); ul.appendChild(li); }); prose.appendChild(ul); }
+      else { var pp = el('p'); cites(pp, b.x); prose.appendChild(pp); }
+    });
+    view.appendChild(rv(prose));
+    if (p.sources && p.sources.length) {
+      var s = el('section', 'sources'); s.appendChild(el('h2', null, t.sources));
+      var ol = el('ol');
+      p.sources.forEach(function (src, i) {
+        var li = el('li'); li.id = 'src-' + (i + 1);
+        li.appendChild(el('span', 'n', '[' + (i + 1) + ']'));
+        var box = el('div'); var a = el('a', null, src.title); a.href = src.url; a.target = '_blank'; a.rel = 'noopener'; box.appendChild(a);
+        box.appendChild(el('span', 'pub', src.publisher + ' · ' + src.date));
+        li.appendChild(box); ol.appendChild(li);
+      });
+      s.appendChild(ol); view.appendChild(s);
+    }
+    if (p.carousel) {
+      var c = el('div', 'cta'); var a2 = el('a', 'btn', t.carousel + ' →'); a2.href = p.carousel; a2.target = '_blank'; a2.rel = 'noopener'; c.appendChild(a2); view.appendChild(c);
+    }
+    onScroll();
+  }
+
+  function onScroll() {
+    if (!state.post) { progress.style.transform = 'scaleX(0)'; return; }
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var r = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    progress.style.transform = 'scaleX(' + r + ')';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  function render() {
+    renderChrome();
+    var p = null;
+    if (state.post) POSTS.forEach(function (x) { if (x.id === state.post) p = x; });
+    if (p) renderPost(p); else { state.post = null; renderIndex(); }
+  }
+  function openPost(id) { state.post = id; try { history.replaceState(null, '', '#' + id); } catch (e) {} render(); window.scrollTo(0, 0); }
+  function goHome() { state.post = null; try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} render(); window.scrollTo(0, 0); }
+
+  document.getElementById('home').addEventListener('click', goHome);
+  Array.prototype.forEach.call(document.querySelectorAll('.lang button'), function (b) {
+    b.addEventListener('click', function () {
+      var nl = b.getAttribute('data-lang'); if (nl === state.lang) return;
+      state.lang = nl; state.tag = 'all';
+      try { localStorage.setItem('hea-lang', state.lang); } catch (e) {}
+      render();
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>
