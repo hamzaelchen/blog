@@ -151,6 +151,51 @@ h1 .hl { color: var(--accent); }
 .prose h2::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex: none; transform: translateY(-1px); }
 .prose ul { margin: 0; padding-left: 1.15em; display: flex; flex-direction: column; gap: 10px; font-size: 17.5px; line-height: 1.6; color: var(--body); }
 .prose li::marker { color: var(--accent); }
+
+.fig { margin: 8px 0; padding: 22px; border: 1px solid var(--line-2); border-radius: var(--r-box); background: var(--surface); display: flex; flex-direction: column; gap: 16px; }
+.fig figcaption { font-size: 14px; line-height: 1.55; color: var(--dim); }
+.fig figcaption sup a, .fig .cell sup a { color: var(--accent); text-decoration: none; font-family: var(--mono); font-size: .72em; }
+.fig .kick { font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); }
+.tl-axis { position: relative; height: 112px; margin-inline: 10px; }
+.tl-line { position: absolute; left: 0; right: 0; bottom: 26px; height: 2px; background: var(--line-2); border-radius: 2px; }
+.tl-tick { position: absolute; bottom: 20px; width: 1px; height: 14px; background: var(--line-2); }
+.tl-mon { position: absolute; bottom: 0; transform: translateX(-50%); font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); }
+.tl-pin { position: absolute; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; }
+.tl-pin .b { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: 11px; font-weight: 500; background: var(--surface-2); border: 1px solid var(--line-2); color: var(--text); }
+.tl-pin .s { width: 1px; background: var(--line-2); flex: none; }
+.tl-pin .d { width: 9px; height: 9px; border-radius: 50%; background: var(--dim); margin-top: -1px; }
+.tl-pin.hot .b { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.tl-pin.hot .d { background: var(--accent); }
+.tl-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.tl-list li { display: grid; grid-template-columns: 22px 62px minmax(0, 1fr); gap: 4px 14px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15.5px; line-height: 1.45; color: var(--body); }
+.tl-list .n { font-family: var(--mono); font-size: 12px; color: var(--mute); }
+.tl-list .dt { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--dim); white-space: nowrap; }
+.tl-list li.hot .n, .tl-list li.hot .dt { color: var(--accent); }
+.cmp { display: flex; flex-direction: column; gap: 14px; }
+.cmp-col { border: 1px solid var(--line-2); border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; gap: 14px; background: var(--bg); }
+.cmp-col.now { border-color: var(--accent); background: var(--accent-soft); }
+.cmp-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.cmp-stack { display: flex; flex-direction: column; gap: 6px; }
+.chip { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line-2); background: var(--surface-2); color: var(--text); white-space: nowrap; }
+.chip.cat { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 500; padding: 14px 16px; }
+.chip.closed { border-style: dashed; color: var(--dim); }
+.chip.open { border-color: var(--text); }
+.arr { color: var(--accent); font-family: var(--mono); font-size: 18px; }
+.cmp-col .note { font-size: 14.5px; line-height: 1.5; color: var(--body); }
+.mx { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.mx-r { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) auto; gap: 6px 16px; align-items: start; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.4; color: var(--body); }
+.mx-h { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); padding-block: 10px; }
+.st { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .05em; text-transform: uppercase; line-height: 1.35; }
+.st::before { content: ""; width: 9px; height: 9px; border-radius: 50%; flex: none; margin-top: 1px; }
+.st.ga { color: var(--accent); } .st.ga::before { background: var(--accent); }
+.st.preview { color: var(--text); } .st.preview::before { border: 1.5px solid var(--text); }
+.st.claim { color: var(--dim); } .st.claim::before { border: 1.5px dashed var(--dim); }
+.flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; counter-reset: s; }
+.flow li { border: 1px solid var(--line-2); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 8px; background: var(--bg); font-size: 14.5px; line-height: 1.4; color: var(--text); }
+.flow li.prep { border-style: dashed; color: var(--body); }
+.flow .no { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.flow li.prep .no { color: var(--mute); }
+@media (max-width: 560px) { .fig { padding: 16px; } .mx-r { grid-template-columns: minmax(0, 1fr) 30px; } .mx-r .cell:nth-child(2) { grid-column: 1 / -1; grid-row: 2; } .mx-h { display: none; } .tl-list li { grid-template-columns: 20px 54px minmax(0, 1fr); gap: 4px 10px; } }
 .prose sup a { color: var(--accent); text-decoration: none; font-family: var(--mono); font-size: .72em; padding-inline: 1px; }
 .sources { margin-top: 34px; border: 1px solid var(--line-2); border-radius: var(--r-box); background: var(--surface); padding: 22px clamp(16px, 4vw, 28px); display: flex; flex-direction: column; gap: 14px; }
 .sources h2 { margin: 0; font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
@@ -194,162 +239,667 @@ footer a { color: var(--dim); }
 </div>
 
 <!-- Posts. Newest first. Add a new object at the top of the array. Each text field has fr and en. Blocks: h2, p, ul. Cite sources in text with [n]. -->
-<script type="application/json" id="posts">
-[
-  {
-    "id": "open-tables-any-engine",
-    "date": "2026-10-26",
-    "tag": { "fr": "Tendance data", "en": "Data trend" },
-    "minutes": 6,
-    "title": { "fr": "Tes tables, n'importe quel moteur.", "en": "Your tables, any engine." },
-    "summary": {
-      "fr": "En octobre, Databricks et Snowflake ont chacun livré des fonctions autour des formats de table ouverts. Ce qui s'est passé, ce qui reste du marketing, et ce que ça change pour un futur data engineer.",
-      "en": "In October, Databricks and Snowflake each shipped features built around open table formats. What happened, what is still marketing, and what it means for a future data engineer."
-    },
-    "body": {
-      "en": [
-        { "t": "p", "x": "For years, a table format was a way to keep your data inside one platform. In 2026, two of the biggest data platforms started doing the opposite: opening their tables to other engines. Here is what happened, what is still vendor marketing, and what it means for anyone learning data engineering." },
-        { "t": "h2", "x": "What happened, and when" },
-        { "t": "p", "x": "In March 2026, Snowflake announced support for Apache Iceberg v3, the latest version of the open table format. The announcement covered row lineage, the Variant type, deletion vectors, nanosecond timestamps, geometry and geography types, and default values.[3] Snowflake's release notes list general availability of that support on 7 May 2026.[4]" },
-        { "t": "p", "x": "In July, Databricks published a post saying that engines such as Apache Spark, Apache Flink, Starburst, DuckDB and StreamNative can create, read and write Unity Catalog managed tables. At that point, external access was a public preview.[5] The October release notes show how far it went. On 13 October, external writes to managed Delta tables from external Spark clients became generally available, together with external access to views through the Unity REST API.[1] On 14 October, transactions, which group several SQL statements into one atomic unit, became generally available for managed Delta and Iceberg tables in Unity Catalog.[1]" },
-        { "t": "p", "x": "Two days later, on 16 October, Snowflake moved the in-place upgrade of Iceberg tables from v2 to v3 to general availability. It is done with a single ALTER ICEBERG TABLE statement.[2]" },
-        { "t": "h2", "x": "Why it matters" },
-        { "t": "p", "x": "The pattern across these announcements is the same. The data sits in an open format, a catalog decides who may touch it, and several engines can work on the same table. Databricks says that its managed tables, stored as Delta or Iceberg, stay reachable from any engine while governance stays central in Unity Catalog.[5] Snowflake describes a REST catalog interface in its Horizon Catalog that lets outside engines read Iceberg tables. When that post was published, writing through the interface was in private preview, so check the current status before you rely on it.[3]" },
-        { "t": "p", "x": "The lock-in does not disappear. It moves. If the table format is open, the catalog and the governance rules become the place where a platform keeps its grip, which makes the choice of catalog as important as the choice of format. That last sentence is my reading, not a claim from either vendor." },
-        { "t": "h2", "x": "The details data engineers should know" },
-        { "t": "ul", "x": [
-          "Snowflake's v3 upgrade works for the tables it manages and for externally managed tables that use an Iceberg REST catalog.[2]",
-          "The upgrade is permanent. For Snowflake-managed tables you can restore the original v2 version with Time Travel, but only during the retention period. The note does not say the same for external tables.[2]",
-          "With default expressions, Snowflake writes only expressions that evaluate to a constant, such as PI(), into the Iceberg metadata. Others, such as CURRENT_DATE(), are evaluated only for writes made by Snowflake.[2]",
-          "On the Databricks side, cross-engine attribute-based access control reached general availability on 1 October, so external engines can read managed tables while the access policies are enforced.[1]",
-          "Iceberg 1.12.0 removes support for Spark 3.4 and Flink 2.0 and adds Flink 2.2 and 2.3. The v4 format is still at the foundation stage and should not go to production.[6]"
-        ] },
-        { "t": "h2", "x": "What the numbers say, and what they do not" },
-        { "t": "p", "x": "Databricks claims up to 50 percent storage savings and queries up to 20 times faster for Unity Catalog managed tables.[5] These figures come from Databricks itself, and I did not find an independent benchmark for them. Treat them as a hypothesis to test on your own workload." },
-        { "t": "h2", "x": "Before you upgrade" },
-        { "t": "p", "x": "Dremio's upgrade guide for Iceberg 1.12.0 gives a sensible order of work that applies to any table format change.[6]" },
-        { "t": "ul", "x": [
-          "Inventory every engine, client and table, and the features you actually use.",
-          "Look for position delete files that carry row data, using the position_deletes metadata table, before you upgrade.",
-          "Recompile custom code and test representative tables, including failure scenarios.",
-          "Roll out by risk level: readers first, then low-volume writers, then streaming jobs, then maintenance jobs.",
-          "Keep the library upgrade, the engine runtime upgrade and the table format version upgrade as three separate decisions."
-        ] },
-        { "t": "h2", "x": "My take as a future data engineer" },
-        { "t": "p", "x": "The skill that travels from one company to another is not one platform. It is the layer below: how an open table format stores its metadata, how a catalog hands out credentials, and how two engines avoid overwriting each other. A good exercise would be a small project that writes the same Iceberg table from two engines and reads it back from a third. It would show you what the product pages skip." },
-        { "t": "h2", "x": "Limits and open questions" },
-        { "t": "ul", "x": [
-          "Status varies by feature. The October Databricks notes mix generally available and beta items, so read each entry before you plan around it.[1]",
-          "The exact release date of Iceberg 1.12.0 comes from secondary sources. Dremio dates it to 30 September and a community newsletter says it was announced on 1 October.[6][7] I did not find an official announcement page.",
-          "The performance and savings figures are vendor claims, as explained above."
-        ] },
-        { "t": "h2", "x": "In short" },
-        { "t": "p", "x": "Open tables are no longer a side project. In mid-October, both Databricks and Snowflake shipped features built around open table formats. If you are learning data engineering, learn Iceberg, learn how catalogs work, and read the release note before you read the blog post." }
-      ],
-      "fr": [
-        { "t": "p", "x": "Pendant des années, le format de table a servi à garder tes données dans une seule plateforme. En 2026, deux des plus grandes plateformes data ont commencé à faire l'inverse : ouvrir leurs tables à d'autres moteurs. Voici ce qui s'est passé, ce qui reste du marketing d'éditeur, et ce que ça change pour qui apprend le data engineering." },
-        { "t": "h2", "x": "Ce qui s'est passé, et quand" },
-        { "t": "p", "x": "En mars 2026, Snowflake a annoncé la prise en charge d'Apache Iceberg v3, la dernière version du format de table ouvert. L'annonce couvrait le row lineage, le type Variant, les deletion vectors, les timestamps à la nanoseconde, les types géométrie et géographie, et les valeurs par défaut.[3] Les notes de version de Snowflake indiquent la disponibilité générale de ce support le 7 mai 2026.[4]" },
-        { "t": "p", "x": "En juillet, Databricks a publié un article expliquant que des moteurs comme Apache Spark, Apache Flink, Starburst, DuckDB et StreamNative peuvent créer, lire et écrire des tables gérées Unity Catalog. À ce moment, l'accès externe était en préversion publique.[5] Les notes de version d'octobre montrent la suite. Le 13 octobre, les écritures externes dans les tables Delta gérées depuis des clients Spark externes sont passées en disponibilité générale, avec l'accès externe aux vues via l'API REST Unity.[1] Le 14 octobre, les transactions, qui regroupent plusieurs instructions SQL en une unité atomique, sont passées en disponibilité générale pour les tables Delta et Iceberg gérées dans Unity Catalog.[1]" },
-        { "t": "p", "x": "Deux jours plus tard, le 16 octobre, Snowflake a fait passer en disponibilité générale la mise à niveau en place des tables Iceberg de la v2 vers la v3. Elle se fait avec une seule instruction ALTER ICEBERG TABLE.[2]" },
-        { "t": "h2", "x": "Pourquoi c'est important" },
-        { "t": "p", "x": "Le schéma est le même dans toutes ces annonces. Les données restent dans un format ouvert, un catalogue décide qui peut y toucher, et plusieurs moteurs peuvent travailler sur la même table. Databricks affirme que ses tables gérées, stockées en Delta ou en Iceberg, restent accessibles depuis n'importe quel moteur pendant que la gouvernance reste centralisée dans Unity Catalog.[5] Snowflake décrit une interface de catalogue REST dans son Horizon Catalog qui permet à des moteurs externes de lire les tables Iceberg. Quand cet article a été publié, l'écriture via cette interface était en préversion privée : vérifie le statut actuel avant de t'appuyer dessus.[3]" },
-        { "t": "p", "x": "Le verrouillage ne disparaît pas. Il se déplace. Si le format de table est ouvert, c'est le catalogue et les règles de gouvernance qui permettent à une plateforme de garder la main, ce qui rend le choix du catalogue aussi important que celui du format. Cette dernière phrase est mon interprétation, pas une affirmation de l'un des éditeurs." },
-        { "t": "h2", "x": "Les détails à connaître pour un data engineer" },
-        { "t": "ul", "x": [
-          "La mise à niveau v3 de Snowflake fonctionne pour les tables qu'il gère et pour les tables gérées en externe via un catalogue Iceberg REST.[2]",
-          "La mise à niveau est permanente. Pour les tables gérées par Snowflake, tu peux restaurer la version v2 d'origine avec Time Travel, mais seulement pendant la période de rétention. La note ne dit pas la même chose pour les tables externes.[2]",
-          "Pour les expressions par défaut, Snowflake n'écrit dans les métadonnées Iceberg que les expressions qui s'évaluent en une constante, comme PI(). Les autres, comme CURRENT_DATE(), ne sont évaluées que pour les écritures faites par Snowflake.[2]",
-          "Côté Databricks, le contrôle d'accès par attributs inter-moteurs est passé en disponibilité générale le 1er octobre : des moteurs externes peuvent lire les tables gérées pendant que les politiques d'accès sont appliquées.[1]",
-          "Iceberg 1.12.0 retire la prise en charge de Spark 3.4 et de Flink 2.0, et ajoute Flink 2.2 et 2.3. Le format v4 en est encore aux fondations et ne doit pas aller en production.[6]"
-        ] },
-        { "t": "h2", "x": "Ce que disent les chiffres, et ce qu'ils ne disent pas" },
-        { "t": "p", "x": "Databricks annonce jusqu'à 50 % d'économies de stockage et des requêtes jusqu'à 20 fois plus rapides pour les tables gérées Unity Catalog.[5] Ces chiffres viennent de Databricks lui-même, et je n'ai pas trouvé de benchmark indépendant pour les confirmer. Prends-les comme une hypothèse à tester sur ta propre charge de travail." },
-        { "t": "h2", "x": "Avant de mettre à jour" },
-        { "t": "p", "x": "Le guide de mise à jour d'Iceberg 1.12.0 publié par Dremio propose un ordre de travail raisonnable, valable pour tout changement de format de table.[6]" },
-        { "t": "ul", "x": [
-          "Faire l'inventaire de tous les moteurs, clients et tables, et des fonctions réellement utilisées.",
-          "Chercher les fichiers de suppression de position qui contiennent des données de ligne, avec la table de métadonnées position_deletes, avant la mise à jour.",
-          "Recompiler le code personnalisé et tester des tables représentatives, y compris les scénarios d'échec.",
-          "Déployer par niveau de risque : les lecteurs d'abord, puis les écrivains à faible volume, puis les jobs de streaming, puis les jobs de maintenance.",
-          "Garder la mise à jour de la bibliothèque, celle du runtime du moteur et celle de la version du format de table comme trois décisions séparées."
-        ] },
-        { "t": "h2", "x": "Mon avis de futur data engineer" },
-        { "t": "p", "x": "La compétence qui voyage d'une entreprise à l'autre n'est pas une plateforme. C'est la couche en dessous : comment un format de table ouvert stocke ses métadonnées, comment un catalogue distribue des identifiants d'accès, et comment deux moteurs évitent de s'écraser mutuellement. Un bon exercice serait un petit projet qui écrit la même table Iceberg depuis deux moteurs et la relit depuis un troisième. Il montrerait ce que les pages produit passent sous silence." },
-        { "t": "h2", "x": "Limites et questions ouvertes" },
-        { "t": "ul", "x": [
-          "Le statut varie selon la fonction. Les notes Databricks d'octobre mélangent des éléments en disponibilité générale et en bêta : lis chaque entrée avant de planifier autour.[1]",
-          "La date exacte de sortie d'Iceberg 1.12.0 vient de sources secondaires. Dremio la situe au 30 septembre et une newsletter communautaire parle d'une annonce le 1er octobre.[6][7] Je n'ai pas trouvé de page d'annonce officielle.",
-          "Les chiffres de performance et d'économies sont des affirmations d'éditeur, comme expliqué plus haut."
-        ] },
-        { "t": "h2", "x": "En bref" },
-        { "t": "p", "x": "Les tables ouvertes ne sont plus un sujet annexe. À la mi-octobre, Databricks et Snowflake ont tous deux livré des fonctions autour des formats de table ouverts. Si tu apprends le data engineering, apprends Iceberg, apprends comment fonctionnent les catalogues, et lis la note de version avant l'article de blog." }
-      ]
-    },
-    "sources": [
-      { "title": "Databricks release notes: October 2026", "publisher": "Databricks documentation", "date": "2026-10 (entries of 1, 13 and 14 Oct)", "url": "https://docs.databricks.com/aws/en/release-notes/product/2026/october" },
-      { "title": "October 16, 2026: Apache Iceberg v3 table upgrades and expression defaults (General availability)", "publisher": "Snowflake documentation", "date": "2026-10-16", "url": "https://docs.snowflake.com/en/release-notes/2026/other/2026-10-16-iceberg-v3-upgrade-expression-defaults-ga" },
-      { "title": "Announcing Apache Iceberg v3 Support on Snowflake", "publisher": "Snowflake blog", "date": "2026-03-04", "url": "https://www.snowflake.com/en/blog/apache-iceberg-v3-support/" },
-      { "title": "May 7, 2026: Support for Apache Iceberg version 3 (General availability)", "publisher": "Snowflake documentation", "date": "2026-05-07", "url": "https://docs.snowflake.com/en/release-notes/2026/other/2026-05-07-iceberg-v3-ga" },
-      { "title": "How Unity Catalog managed tables bring interoperability, performance and unified governance", "publisher": "Databricks blog", "date": "2026-07-16", "url": "https://www.databricks.com/blog/how-unity-catalog-managed-tables-bring-interoperability-performance-and-unified-governance" },
-      { "title": "Apache Iceberg 1.12.0: What's New, Breaking Changes, and Upgrade Guide", "publisher": "Dremio blog (secondary source)", "date": "2026 (covers the 30 Sep 2026 release)", "url": "https://www.dremio.com/blog/apache-iceberg-1-12-0-whats-new-breaking-changes-and-upgrade-guide/" },
-      { "title": "Apache Data Lakehouse Weekly: September 29 to October 7, 2026", "publisher": "DEV Community (community newsletter, secondary source)", "date": "2026-10 (week of 29 Sep to 7 Oct)", "url": "https://dev.to/alexmercedcoder/apache-data-lakehouse-weekly-september-29-to-october-7-2026-42im" }
-    ],
-    "carousel": ""
+<script type="application/json" id="posts">[
+ {
+  "id": "open-tables-any-engine",
+  "date": "2026-10-26",
+  "tag": {
+   "fr": "Tendance data",
+   "en": "Data trend"
   },
-  {
-    "id": "why-this-blog",
-    "date": "2026-10-26",
-    "tag": { "fr": "Édito", "en": "Intro" },
-    "minutes": 3,
-    "title": { "fr": "Pourquoi ce blog.", "en": "Why this blog." },
-    "summary": {
-      "fr": "Qui je suis, pourquoi la data et l'IA me passionnent, et ce que tu trouveras ici trois fois par semaine.",
-      "en": "Who I am, why data and AI fascinate me, and what you'll find here three times a week."
+  "minutes": 7,
+  "title": {
+   "fr": "Tes tables, n'importe quel moteur.",
+   "en": "Your tables, any engine."
+  },
+  "summary": {
+   "fr": "Comprends ce que Databricks et Snowflake ont vraiment changé en octobre, quels chiffres ne sont que des annonces, et suis un plan en 5 étapes à faire cette semaine.",
+   "en": "Know what Databricks and Snowflake really changed in October, which numbers are only vendor claims, and follow a 5-step plan you can run this week."
+  },
+  "body": {
+   "en": [
+    {
+     "t": "p",
+     "x": "For years, a table format was a way to keep your data inside one platform. In 2026, two of the biggest data platforms started doing the opposite: opening their tables to other engines. Here is what happened, what is still vendor marketing, and what it means for anyone learning data engineering."
     },
-    "body": {
-      "en": [
-        { "t": "p", "x": "Hi, I'm Hamza El Alami. I'm an engineering student at EMSI Casablanca, and I'm passionate about data and everything around it: collecting it, cleaning it, moving it, modeling it, and turning it into decisions people can trust." },
-        { "t": "h2", "x": "Who I am" },
-        { "t": "p", "x": "My studies cover deep learning, IoT architecture, data preprocessing and entrepreneurship. Most of my projects are built in teams with classmates. I speak Arabic, French and English, which is why this blog exists in more than one language." },
-        { "t": "h2", "x": "What drives me" },
-        { "t": "p", "x": "Data and AI are changing how every industry works, and I want to be one of the people who builds the systems behind that change. What fascinates me is not a single tool or a single model, but how the whole chain fits together, from raw data to a decision." },
-        { "t": "h2", "x": "What this blog is" },
-        { "t": "p", "x": "I publish three times a week. Each post covers a single topic, first as a short carousel on LinkedIn, then in a detailed version here." },
-        { "t": "ul", "x": [
-          "Monday: data, data engineering, cloud and the tools of the trade.",
-          "Wednesday: artificial intelligence news.",
-          "Friday: tech news and industry trends."
-        ] },
-        { "t": "h2", "x": "My rule on sources" },
-        { "t": "p", "x": "Every important fact points to a numbered source, listed at the bottom of the article with its publisher and date. I favor official announcements, engineering blogs, research papers and recognized specialist press. When something is unconfirmed, I say so." },
-        { "t": "h2", "x": "Read it in your language" },
-        { "t": "p", "x": "The site opens in English. Use the FR button at the top of the page to read everything in French, and EN to come back." }
-      ],
-      "fr": [
-        { "t": "p", "x": "Salut, je suis Hamza El Alami. Je suis étudiant ingénieur à l'EMSI Casablanca et je suis passionné par la data et tout ce qui l'entoure : la collecter, la nettoyer, la transporter, la modéliser et la transformer en décisions fiables." },
-        { "t": "h2", "x": "Qui je suis" },
-        { "t": "p", "x": "Mes études couvrent le deep learning, l'architecture IoT, le prétraitement des données et l'entrepreneuriat. La plupart de mes projets se font en équipe avec mes camarades. Je parle arabe, français et anglais, c'est pourquoi ce blog existe en plusieurs langues." },
-        { "t": "h2", "x": "Ce qui me motive" },
-        { "t": "p", "x": "La data et l'IA changent le fonctionnement de tous les secteurs, et je veux faire partie de ceux qui construisent les systèmes derrière ce changement. Ce qui me fascine, ce n'est pas un outil ou un modèle isolé, mais la façon dont toute la chaîne s'assemble, de la donnée brute jusqu'à la décision." },
-        { "t": "h2", "x": "Ce qu'est ce blog" },
-        { "t": "p", "x": "Je publie trois fois par semaine. Chaque publication traite un seul sujet, d'abord en carrousel court sur LinkedIn, puis en version détaillée ici." },
-        { "t": "ul", "x": [
-          "Lundi : data, data engineering, cloud et outils du métier.",
-          "Mercredi : actualité de l'intelligence artificielle.",
-          "Vendredi : actualité tech et tendances du secteur."
-        ] },
-        { "t": "h2", "x": "Ma règle sur les sources" },
-        { "t": "p", "x": "Chaque fait important renvoie à une source numérotée, listée en bas de l'article avec son éditeur et sa date. Je privilégie les communiqués officiels, les blogs d'ingénierie, les articles de recherche et la presse spécialisée reconnue. Quand une information n'est pas confirmée, je l'écris." },
-        { "t": "h2", "x": "À lire dans ta langue" },
-        { "t": "p", "x": "Le site s'ouvre en anglais. Utilise le bouton FR en haut de la page pour tout lire en français, et EN pour revenir." }
-      ]
+    {
+     "t": "h2",
+     "x": "What you will get from this article"
     },
-    "sources": [],
-    "carousel": ""
-  }
-]
-</script>
+    {
+     "t": "ul",
+     "x": [
+      "A plain-language picture of what Databricks and Snowflake actually shipped in October, with dates.",
+      "A way to tell real progress from vendor claims: which numbers are independent and which are not.",
+      "A checklist to run before any table format upgrade, including the one change you cannot undo.",
+      "A small project idea for your portfolio that shows you can work across engines."
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "What happened, and when"
+    },
+    {
+     "t": "p",
+     "x": "In March 2026, Snowflake announced support for Apache Iceberg v3, the latest version of the open table format. The announcement covered row lineage, the Variant type, deletion vectors, nanosecond timestamps, geometry and geography types, and default values.[3] Snowflake's release notes list general availability of that support on 7 May 2026.[4]"
+    },
+    {
+     "t": "p",
+     "x": "In July, Databricks published a post saying that engines such as Apache Spark, Apache Flink, Starburst, DuckDB and StreamNative can create, read and write Unity Catalog managed tables. At that point, external access was a public preview.[5] The October release notes show how far it went. On 13 October, external writes to managed Delta tables from external Spark clients became generally available, together with external access to views through the Unity REST API.[1] On 14 October, transactions, which group several SQL statements into one atomic unit, became generally available for managed Delta and Iceberg tables in Unity Catalog.[1]"
+    },
+    {
+     "t": "p",
+     "x": "Two days later, on 16 October, Snowflake moved the in-place upgrade of Iceberg tables from v2 to v3 to general availability. It is done with a single ALTER ICEBERG TABLE statement.[2]"
+    },
+    {
+     "t": "timeline",
+     "cap": "Six dates, drawn to scale from March to October 2026. The three highlighted dates are the October releases.",
+     "items": [
+      {
+       "d": "2026-03-04",
+       "h": "Snowflake announces support for Iceberg v3.[3]"
+      },
+      {
+       "d": "2026-05-07",
+       "h": "Snowflake lists Iceberg v3 as generally available.[4]"
+      },
+      {
+       "d": "2026-07-16",
+       "h": "Databricks: outside engines can create, read and write managed tables, in public preview.[5]"
+      },
+      {
+       "d": "2026-10-13",
+       "h": "Databricks: external writes to managed Delta tables, generally available.[1]",
+       "hot": true
+      },
+      {
+       "d": "2026-10-14",
+       "h": "Databricks: transactions on managed Delta and Iceberg tables, generally available.[1]",
+       "hot": true
+      },
+      {
+       "d": "2026-10-16",
+       "h": "Snowflake: in-place upgrade of Iceberg tables from v2 to v3, generally available.[2]",
+       "hot": true
+      }
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Why it matters"
+    },
+    {
+     "t": "p",
+     "x": "The pattern across these announcements is the same. The data sits in an open format, a catalog decides who may touch it, and several engines can work on the same table. Databricks says that its managed tables, stored as Delta or Iceberg, stay reachable from any engine while governance stays central in Unity Catalog.[5] Snowflake describes a REST catalog interface in its Horizon Catalog that lets outside engines read Iceberg tables. When that post was published, writing through the interface was in private preview, so check the current status before you rely on it.[3]"
+    },
+    {
+     "t": "compare",
+     "cap": "The shift in one picture. The second panel follows the pattern both vendors describe.[5][3]",
+     "bt": "Before",
+     "bn": [
+      "Platform engine",
+      "Platform table format"
+     ],
+     "bnote": "The table format kept your data inside one platform.",
+     "at": "Now",
+     "engines": [
+      "Spark",
+      "Flink",
+      "DuckDB"
+     ],
+     "cat": "Catalog",
+     "tab": "Open table",
+     "anote": "A catalog decides who may touch the table, and several engines work on the same data. The lock-in moves to the catalog. That last point is my reading, not a vendor claim."
+    },
+    {
+     "t": "p",
+     "x": "The lock-in does not disappear. It moves. If the table format is open, the catalog and the governance rules become the place where a platform keeps its grip, which makes the choice of catalog as important as the choice of format. That last sentence is my reading, not a claim from either vendor."
+    },
+    {
+     "t": "h2",
+     "x": "The details data engineers should know"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Snowflake's v3 upgrade works for the tables it manages and for externally managed tables that use an Iceberg REST catalog.[2]",
+      "The upgrade is permanent. For Snowflake-managed tables you can restore the original v2 version with Time Travel, but only during the retention period. The note does not say the same for external tables.[2]",
+      "With default expressions, Snowflake writes only expressions that evaluate to a constant, such as PI(), into the Iceberg metadata. Others, such as CURRENT_DATE(), are evaluated only for writes made by Snowflake.[2]",
+      "On the Databricks side, cross-engine attribute-based access control reached general availability on 1 October, so external engines can read managed tables while the access policies are enforced.[1]",
+      "Iceberg 1.12.0 removes support for Spark 3.4 and Flink 2.0 and adds Flink 2.2 and 2.3. The v4 format is still at the foundation stage and should not go to production.[6]"
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "What the numbers say, and what they do not"
+    },
+    {
+     "t": "p",
+     "x": "Databricks claims up to 50 percent storage savings and queries up to 20 times faster for Unity Catalog managed tables.[5] These figures come from Databricks itself, and I did not find an independent benchmark for them. Treat them as a hypothesis to test on your own workload."
+    },
+    {
+     "t": "matrix",
+     "cap": "What is shipped, what is still preview, and what is only a claim. Status as reported in the sources at the time they were published.",
+     "head": [
+      "What",
+      "Status",
+      "Source"
+     ],
+     "rows": [
+      {
+       "k": "External writes to managed Delta tables (Databricks)",
+       "s": "ga",
+       "st": "Generally available, 13 Oct",
+       "src": "[1]"
+      },
+      {
+       "k": "Transactions on managed Delta and Iceberg tables (Databricks)",
+       "s": "ga",
+       "st": "Generally available, 14 Oct",
+       "src": "[1]"
+      },
+      {
+       "k": "In-place Iceberg v2 to v3 upgrade (Snowflake)",
+       "s": "ga",
+       "st": "Generally available, 16 Oct. Permanent",
+       "src": "[2]"
+      },
+      {
+       "k": "Outside engines writing through Snowflake's REST catalog interface",
+       "s": "preview",
+       "st": "Private preview in March. Check today's status",
+       "src": "[3]"
+      },
+      {
+       "k": "Up to 50% storage savings and queries up to 20 times faster (Databricks)",
+       "s": "claim",
+       "st": "Vendor claim. No independent benchmark found",
+       "src": "[5]"
+      }
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Before you upgrade"
+    },
+    {
+     "t": "p",
+     "x": "Dremio's upgrade guide for Iceberg 1.12.0 gives a sensible order of work that applies to any table format change.[6]"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Inventory every engine, client and table, and the features you actually use.",
+      "Look for position delete files that carry row data, using the position_deletes metadata table, before you upgrade.",
+      "Recompile custom code and test representative tables, including failure scenarios.",
+      "Roll out by risk level: readers first, then low-volume writers, then streaming jobs, then maintenance jobs.",
+      "Keep the library upgrade, the engine runtime upgrade and the table format version upgrade as three separate decisions."
+     ]
+    },
+    {
+     "t": "flow",
+     "cap": "A safe order for a table format upgrade, based on Dremio's Iceberg 1.12.0 guide.[6] Keep the library, the engine runtime and the table format as three separate decisions.",
+     "prepLabel": "Prep",
+     "rollLabel": "Roll out",
+     "prep": 2,
+     "steps": [
+      "Inventory every engine, client and table",
+      "Test representative tables, including failures",
+      "Readers first",
+      "Low-volume writers",
+      "Streaming jobs",
+      "Maintenance jobs"
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Your plan for this week"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Write down which engines read and write your tables today, and which catalog sits in front of them.",
+      "Check the status of each feature you rely on in the vendor release notes: generally available, beta or preview.[1]",
+      "Before any Iceberg v3 upgrade, test on a copy of the table, and check whether you can go back. On Snowflake-managed tables, Time Travel can restore v2, but only during the retention period.[2]",
+      "Run your own benchmark before you trust a savings figure: same data, same workload, before and after.[5]",
+      "Build the two-engine mini project: write an Iceberg table from one engine, read it from another, and publish the notes on your blog or GitHub."
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "My take as a future data engineer"
+    },
+    {
+     "t": "p",
+     "x": "The skill that travels from one company to another is not one platform. It is the layer below: how an open table format stores its metadata, how a catalog hands out credentials, and how two engines avoid overwriting each other. A good exercise would be a small project that writes the same Iceberg table from two engines and reads it back from a third. It would show you what the product pages skip."
+    },
+    {
+     "t": "h2",
+     "x": "Limits and open questions"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Status varies by feature. The October Databricks notes mix generally available and beta items, so read each entry before you plan around it.[1]",
+      "The exact release date of Iceberg 1.12.0 comes from secondary sources. Dremio dates it to 30 September and a community newsletter says it was announced on 1 October.[6][7] I did not find an official announcement page.",
+      "The performance and savings figures are vendor claims, as explained above."
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "In short"
+    },
+    {
+     "t": "p",
+     "x": "Open tables are no longer a side project. In mid-October, both Databricks and Snowflake shipped features built around open table formats. If you are learning data engineering, learn Iceberg, learn how catalogs work, and read the release note before you read the blog post."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "x": "Pendant des années, le format de table a servi à garder tes données dans une seule plateforme. En 2026, deux des plus grandes plateformes data ont commencé à faire l'inverse : ouvrir leurs tables à d'autres moteurs. Voici ce qui s'est passé, ce qui reste du marketing d'éditeur, et ce que ça change pour qui apprend le data engineering."
+    },
+    {
+     "t": "h2",
+     "x": "Ce que tu vas gagner en lisant cet article"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Une vue claire de ce que Databricks et Snowflake ont vraiment livré en octobre, avec les dates.",
+      "Un moyen de distinguer les vrais progrès des annonces commerciales : quels chiffres sont indépendants et lesquels ne le sont pas.",
+      "Une checklist à suivre avant toute mise à niveau d'un format de table, y compris le seul changement impossible à annuler.",
+      "Une idée de petit projet pour ton portfolio, qui montre que tu sais travailler avec plusieurs moteurs."
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Ce qui s'est passé, et quand"
+    },
+    {
+     "t": "p",
+     "x": "En mars 2026, Snowflake a annoncé la prise en charge d'Apache Iceberg v3, la dernière version du format de table ouvert. L'annonce couvrait le row lineage, le type Variant, les deletion vectors, les timestamps à la nanoseconde, les types géométrie et géographie, et les valeurs par défaut.[3] Les notes de version de Snowflake indiquent la disponibilité générale de ce support le 7 mai 2026.[4]"
+    },
+    {
+     "t": "p",
+     "x": "En juillet, Databricks a publié un article expliquant que des moteurs comme Apache Spark, Apache Flink, Starburst, DuckDB et StreamNative peuvent créer, lire et écrire des tables gérées Unity Catalog. À ce moment, l'accès externe était en préversion publique.[5] Les notes de version d'octobre montrent la suite. Le 13 octobre, les écritures externes dans les tables Delta gérées depuis des clients Spark externes sont passées en disponibilité générale, avec l'accès externe aux vues via l'API REST Unity.[1] Le 14 octobre, les transactions, qui regroupent plusieurs instructions SQL en une unité atomique, sont passées en disponibilité générale pour les tables Delta et Iceberg gérées dans Unity Catalog.[1]"
+    },
+    {
+     "t": "p",
+     "x": "Deux jours plus tard, le 16 octobre, Snowflake a fait passer en disponibilité générale la mise à niveau en place des tables Iceberg de la v2 vers la v3. Elle se fait avec une seule instruction ALTER ICEBERG TABLE.[2]"
+    },
+    {
+     "t": "timeline",
+     "cap": "Six dates, dessinées à l'échelle de mars à octobre 2026. Les trois dates en vert sont les annonces d'octobre.",
+     "items": [
+      {
+       "d": "2026-03-04",
+       "h": "Snowflake annonce la prise en charge d'Iceberg v3.[3]"
+      },
+      {
+       "d": "2026-05-07",
+       "h": "Snowflake indique Iceberg v3 en disponibilité générale.[4]"
+      },
+      {
+       "d": "2026-07-16",
+       "h": "Databricks : des moteurs externes peuvent créer, lire et écrire des tables gérées, en préversion publique.[5]"
+      },
+      {
+       "d": "2026-10-13",
+       "h": "Databricks : écritures externes sur les tables Delta gérées, en disponibilité générale.[1]",
+       "hot": true
+      },
+      {
+       "d": "2026-10-14",
+       "h": "Databricks : transactions sur les tables Delta et Iceberg gérées, en disponibilité générale.[1]",
+       "hot": true
+      },
+      {
+       "d": "2026-10-16",
+       "h": "Snowflake : mise à niveau sur place des tables Iceberg de la v2 vers la v3, en disponibilité générale.[2]",
+       "hot": true
+      }
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Pourquoi c'est important"
+    },
+    {
+     "t": "p",
+     "x": "Le schéma est le même dans toutes ces annonces. Les données restent dans un format ouvert, un catalogue décide qui peut y toucher, et plusieurs moteurs peuvent travailler sur la même table. Databricks affirme que ses tables gérées, stockées en Delta ou en Iceberg, restent accessibles depuis n'importe quel moteur pendant que la gouvernance reste centralisée dans Unity Catalog.[5] Snowflake décrit une interface de catalogue REST dans son Horizon Catalog qui permet à des moteurs externes de lire les tables Iceberg. Quand cet article a été publié, l'écriture via cette interface était en préversion privée : vérifie le statut actuel avant de t'appuyer dessus.[3]"
+    },
+    {
+     "t": "compare",
+     "cap": "Le virage en une image. Le deuxième panneau suit le schéma que décrivent les deux éditeurs.[5][3]",
+     "bt": "Avant",
+     "bn": [
+      "Moteur de la plateforme",
+      "Format de table de la plateforme"
+     ],
+     "bnote": "Le format de table gardait tes données à l'intérieur d'une seule plateforme.",
+     "at": "Maintenant",
+     "engines": [
+      "Spark",
+      "Flink",
+      "DuckDB"
+     ],
+     "cat": "Catalogue",
+     "tab": "Table ouverte",
+     "anote": "Un catalogue décide qui peut toucher la table, et plusieurs moteurs travaillent sur les mêmes données. La dépendance se déplace vers le catalogue. Ce dernier point est mon interprétation, pas une annonce des éditeurs."
+    },
+    {
+     "t": "p",
+     "x": "Le verrouillage ne disparaît pas. Il se déplace. Si le format de table est ouvert, c'est le catalogue et les règles de gouvernance qui permettent à une plateforme de garder la main, ce qui rend le choix du catalogue aussi important que celui du format. Cette dernière phrase est mon interprétation, pas une affirmation de l'un des éditeurs."
+    },
+    {
+     "t": "h2",
+     "x": "Les détails à connaître pour un data engineer"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "La mise à niveau v3 de Snowflake fonctionne pour les tables qu'il gère et pour les tables gérées en externe via un catalogue Iceberg REST.[2]",
+      "La mise à niveau est permanente. Pour les tables gérées par Snowflake, tu peux restaurer la version v2 d'origine avec Time Travel, mais seulement pendant la période de rétention. La note ne dit pas la même chose pour les tables externes.[2]",
+      "Pour les expressions par défaut, Snowflake n'écrit dans les métadonnées Iceberg que les expressions qui s'évaluent en une constante, comme PI(). Les autres, comme CURRENT_DATE(), ne sont évaluées que pour les écritures faites par Snowflake.[2]",
+      "Côté Databricks, le contrôle d'accès par attributs inter-moteurs est passé en disponibilité générale le 1er octobre : des moteurs externes peuvent lire les tables gérées pendant que les politiques d'accès sont appliquées.[1]",
+      "Iceberg 1.12.0 retire la prise en charge de Spark 3.4 et de Flink 2.0, et ajoute Flink 2.2 et 2.3. Le format v4 en est encore aux fondations et ne doit pas aller en production.[6]"
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Ce que disent les chiffres, et ce qu'ils ne disent pas"
+    },
+    {
+     "t": "p",
+     "x": "Databricks annonce jusqu'à 50 % d'économies de stockage et des requêtes jusqu'à 20 fois plus rapides pour les tables gérées Unity Catalog.[5] Ces chiffres viennent de Databricks lui-même, et je n'ai pas trouvé de benchmark indépendant pour les confirmer. Prends-les comme une hypothèse à tester sur ta propre charge de travail."
+    },
+    {
+     "t": "matrix",
+     "cap": "Ce qui est livré, ce qui est encore en préversion, et ce qui n'est qu'une annonce. Statut tel que rapporté par les sources à leur date de publication.",
+     "head": [
+      "Quoi",
+      "Statut",
+      "Source"
+     ],
+     "rows": [
+      {
+       "k": "Écritures externes sur les tables Delta gérées (Databricks)",
+       "s": "ga",
+       "st": "Disponibilité générale, 13 oct.",
+       "src": "[1]"
+      },
+      {
+       "k": "Transactions sur les tables Delta et Iceberg gérées (Databricks)",
+       "s": "ga",
+       "st": "Disponibilité générale, 14 oct.",
+       "src": "[1]"
+      },
+      {
+       "k": "Mise à niveau sur place Iceberg v2 vers v3 (Snowflake)",
+       "s": "ga",
+       "st": "Disponibilité générale, 16 oct. Permanente",
+       "src": "[2]"
+      },
+      {
+       "k": "Écriture de moteurs externes via l'interface de catalogue REST de Snowflake",
+       "s": "preview",
+       "st": "Préversion privée en mars. Vérifie le statut actuel",
+       "src": "[3]"
+      },
+      {
+       "k": "Jusqu'à 50 % d'économies de stockage et des requêtes jusqu'à 20 fois plus rapides (Databricks)",
+       "s": "claim",
+       "st": "Annonce de l'éditeur. Aucun benchmark indépendant trouvé",
+       "src": "[5]"
+      }
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Avant de mettre à jour"
+    },
+    {
+     "t": "p",
+     "x": "Le guide de mise à jour d'Iceberg 1.12.0 publié par Dremio propose un ordre de travail raisonnable, valable pour tout changement de format de table.[6]"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Faire l'inventaire de tous les moteurs, clients et tables, et des fonctions réellement utilisées.",
+      "Chercher les fichiers de suppression de position qui contiennent des données de ligne, avec la table de métadonnées position_deletes, avant la mise à jour.",
+      "Recompiler le code personnalisé et tester des tables représentatives, y compris les scénarios d'échec.",
+      "Déployer par niveau de risque : les lecteurs d'abord, puis les écrivains à faible volume, puis les jobs de streaming, puis les jobs de maintenance.",
+      "Garder la mise à jour de la bibliothèque, celle du runtime du moteur et celle de la version du format de table comme trois décisions séparées."
+     ]
+    },
+    {
+     "t": "flow",
+     "cap": "Un ordre prudent pour mettre à niveau un format de table, d'après le guide Iceberg 1.12.0 de Dremio.[6] Garde la bibliothèque, le moteur et le format de table comme trois décisions séparées.",
+     "prepLabel": "Prépa",
+     "rollLabel": "Déploiement",
+     "prep": 2,
+     "steps": [
+      "Inventorier chaque moteur, client et table",
+      "Tester des tables représentatives, y compris les cas d'échec",
+      "Les lecteurs d'abord",
+      "Les écritures à faible volume",
+      "Les jobs de streaming",
+      "Les jobs de maintenance"
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Ton plan pour cette semaine"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Note quels moteurs lisent et écrivent tes tables aujourd'hui, et quel catalogue se trouve devant eux.",
+      "Vérifie le statut de chaque fonction dont tu dépends dans les notes de version : disponibilité générale, bêta ou préversion.[1]",
+      "Avant toute mise à niveau Iceberg v3, teste sur une copie de la table et vérifie si un retour en arrière est possible. Sur les tables gérées par Snowflake, Time Travel peut restaurer la v2, mais seulement pendant la période de rétention.[2]",
+      "Fais ton propre benchmark avant de croire un chiffre d'économies : mêmes données, même charge, avant et après.[5]",
+      "Construis le mini-projet à deux moteurs : écris une table Iceberg avec un moteur, lis-la avec un autre, et publie tes notes sur ton blog ou GitHub."
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Mon avis de futur data engineer"
+    },
+    {
+     "t": "p",
+     "x": "La compétence qui voyage d'une entreprise à l'autre n'est pas une plateforme. C'est la couche en dessous : comment un format de table ouvert stocke ses métadonnées, comment un catalogue distribue des identifiants d'accès, et comment deux moteurs évitent de s'écraser mutuellement. Un bon exercice serait un petit projet qui écrit la même table Iceberg depuis deux moteurs et la relit depuis un troisième. Il montrerait ce que les pages produit passent sous silence."
+    },
+    {
+     "t": "h2",
+     "x": "Limites et questions ouvertes"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Le statut varie selon la fonction. Les notes Databricks d'octobre mélangent des éléments en disponibilité générale et en bêta : lis chaque entrée avant de planifier autour.[1]",
+      "La date exacte de sortie d'Iceberg 1.12.0 vient de sources secondaires. Dremio la situe au 30 septembre et une newsletter communautaire parle d'une annonce le 1er octobre.[6][7] Je n'ai pas trouvé de page d'annonce officielle.",
+      "Les chiffres de performance et d'économies sont des affirmations d'éditeur, comme expliqué plus haut."
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "En bref"
+    },
+    {
+     "t": "p",
+     "x": "Les tables ouvertes ne sont plus un sujet annexe. À la mi-octobre, Databricks et Snowflake ont tous deux livré des fonctions autour des formats de table ouverts. Si tu apprends le data engineering, apprends Iceberg, apprends comment fonctionnent les catalogues, et lis la note de version avant l'article de blog."
+    }
+   ]
+  },
+  "sources": [
+   {
+    "title": "Databricks release notes: October 2026",
+    "publisher": "Databricks documentation",
+    "date": "2026-10 (entries of 1, 13 and 14 Oct)",
+    "url": "https://docs.databricks.com/aws/en/release-notes/product/2026/october"
+   },
+   {
+    "title": "October 16, 2026: Apache Iceberg v3 table upgrades and expression defaults (General availability)",
+    "publisher": "Snowflake documentation",
+    "date": "2026-10-16",
+    "url": "https://docs.snowflake.com/en/release-notes/2026/other/2026-10-16-iceberg-v3-upgrade-expression-defaults-ga"
+   },
+   {
+    "title": "Announcing Apache Iceberg v3 Support on Snowflake",
+    "publisher": "Snowflake blog",
+    "date": "2026-03-04",
+    "url": "https://www.snowflake.com/en/blog/apache-iceberg-v3-support/"
+   },
+   {
+    "title": "May 7, 2026: Support for Apache Iceberg version 3 (General availability)",
+    "publisher": "Snowflake documentation",
+    "date": "2026-05-07",
+    "url": "https://docs.snowflake.com/en/release-notes/2026/other/2026-05-07-iceberg-v3-ga"
+   },
+   {
+    "title": "How Unity Catalog managed tables bring interoperability, performance and unified governance",
+    "publisher": "Databricks blog",
+    "date": "2026-07-16",
+    "url": "https://www.databricks.com/blog/how-unity-catalog-managed-tables-bring-interoperability-performance-and-unified-governance"
+   },
+   {
+    "title": "Apache Iceberg 1.12.0: What's New, Breaking Changes, and Upgrade Guide",
+    "publisher": "Dremio blog (secondary source)",
+    "date": "2026 (covers the 30 Sep 2026 release)",
+    "url": "https://www.dremio.com/blog/apache-iceberg-1-12-0-whats-new-breaking-changes-and-upgrade-guide/"
+   },
+   {
+    "title": "Apache Data Lakehouse Weekly: September 29 to October 7, 2026",
+    "publisher": "DEV Community (community newsletter, secondary source)",
+    "date": "2026-10 (week of 29 Sep to 7 Oct)",
+    "url": "https://dev.to/alexmercedcoder/apache-data-lakehouse-weekly-september-29-to-october-7-2026-42im"
+   }
+  ],
+  "carousel": ""
+ },
+ {
+  "id": "why-this-blog",
+  "date": "2026-10-26",
+  "tag": {
+   "fr": "Édito",
+   "en": "Intro"
+  },
+  "minutes": 3,
+  "title": {
+   "fr": "Pourquoi ce blog.",
+   "en": "Why this blog."
+  },
+  "summary": {
+   "fr": "Qui je suis, pourquoi la data et l'IA me passionnent, et ce que tu trouveras ici trois fois par semaine.",
+   "en": "Who I am, why data and AI fascinate me, and what you'll find here three times a week."
+  },
+  "body": {
+   "en": [
+    {
+     "t": "h2",
+     "x": "Who I am"
+    },
+    {
+     "t": "p",
+     "x": "Hi, I'm Hamza El Alami. I'm an engineering student at EMSI Casablanca, and I'm passionate about data and everything around it: collecting it, cleaning it, moving it, modeling it, and turning it into decisions people can trust."
+    },
+    {
+     "t": "h2",
+     "x": "What drives me"
+    },
+    {
+     "t": "p",
+     "x": "Data and AI are changing how every industry works, and I want to be one of the people who builds the systems behind that change. What fascinates me is not a single tool or a single model, but how the whole chain fits together, from raw data to a decision."
+    },
+    {
+     "t": "h2",
+     "x": "What this blog is"
+    },
+    {
+     "t": "p",
+     "x": "I publish three times a week. Each post covers a single topic, first as a short carousel on LinkedIn, then in a detailed version here."
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Monday: data, data engineering, cloud and the tools of the trade.",
+      "Wednesday: artificial intelligence news.",
+      "Friday: tech news and industry trends."
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "My rule on sources"
+    },
+    {
+     "t": "p",
+     "x": "Every important fact points to a numbered source, listed at the bottom of the article with its publisher and date. I favor official announcements, engineering blogs, research papers and recognized specialist press. When something is unconfirmed, I say so."
+    },
+    {
+     "t": "h2",
+     "x": "Read it in your language"
+    },
+    {
+     "t": "p",
+     "x": "The site opens in English. Use the FR button at the top of the page to read everything in French, and EN to come back."
+    }
+   ],
+   "fr": [
+    {
+     "t": "h2",
+     "x": "Qui je suis"
+    },
+    {
+     "t": "p",
+     "x": "Salut, je suis Hamza El Alami. Je suis étudiant ingénieur à l'EMSI Casablanca et je suis passionné par la data et tout ce qui l'entoure : la collecter, la nettoyer, la transporter, la modéliser et la transformer en décisions fiables."
+    },
+    {
+     "t": "h2",
+     "x": "Ce qui me motive"
+    },
+    {
+     "t": "p",
+     "x": "La data et l'IA changent le fonctionnement de tous les secteurs, et je veux faire partie de ceux qui construisent les systèmes derrière ce changement. Ce qui me fascine, ce n'est pas un outil ou un modèle isolé, mais la façon dont toute la chaîne s'assemble, de la donnée brute jusqu'à la décision."
+    },
+    {
+     "t": "h2",
+     "x": "Ce qu'est ce blog"
+    },
+    {
+     "t": "p",
+     "x": "Je publie trois fois par semaine. Chaque publication traite un seul sujet, d'abord en carrousel court sur LinkedIn, puis en version détaillée ici."
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Lundi : data, data engineering, cloud et outils du métier.",
+      "Mercredi : actualité de l'intelligence artificielle.",
+      "Vendredi : actualité tech et tendances du secteur."
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Ma règle sur les sources"
+    },
+    {
+     "t": "p",
+     "x": "Chaque fait important renvoie à une source numérotée, listée en bas de l'article avec son éditeur et sa date. Je privilégie les communiqués officiels, les blogs d'ingénierie, les articles de recherche et la presse spécialisée reconnue. Quand une information n'est pas confirmée, je l'écris."
+    },
+    {
+     "t": "h2",
+     "x": "À lire dans ta langue"
+    },
+    {
+     "t": "p",
+     "x": "Le site s'ouvre en anglais. Utilise le bouton FR en haut de la page pour tout lire en français, et EN pour revenir."
+    }
+   ]
+  },
+  "sources": [],
+  "carousel": ""
+ }
+]</script>
 
 <script>
 (function () {
@@ -532,6 +1082,55 @@ footer a { color: var(--dim); }
     if (last < text.length) parent.appendChild(document.createTextNode(text.slice(last)));
   }
 
+
+  var MON = { en: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], fr: ['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'] };
+  function shortDate(d) { var a = d.split('-'); return (+a[2]) + ' ' + MON[state.lang][+a[1] - 1]; }
+  function figure(b, inner) { var f = el('figure', 'fig'); f.appendChild(inner); if (b.cap) { var c = el('figcaption'); cites(c, b.cap); f.appendChild(c); } return f; }
+  function figTimeline(b) {
+    var w = el('div'); var ts = b.items.map(function (i) { var a = i.d.split('-'); return Date.UTC(+a[0], +a[1] - 1, +a[2]); });
+    var mn = new Date(Math.min.apply(null, ts)), mx = new Date(Math.max.apply(null, ts));
+    var t0 = Date.UTC(mn.getUTCFullYear(), mn.getUTCMonth(), 1), t1 = Date.UTC(mx.getUTCFullYear(), mx.getUTCMonth() + 1, 1), span = t1 - t0;
+    var ax = el('div', 'tl-axis'); ax.setAttribute('aria-hidden', 'true'); ax.appendChild(el('div', 'tl-line'));
+    for (var m = new Date(t0); m.getTime() < t1; m = new Date(Date.UTC(m.getUTCFullYear(), m.getUTCMonth() + 1, 1))) {
+      var pos = (m.getTime() - t0) / span * 100, tk = el('div', 'tl-tick'); tk.style.left = pos + '%'; ax.appendChild(tk);
+      var nx = Date.UTC(m.getUTCFullYear(), m.getUTCMonth() + 1, 1), lb = el('div', 'tl-mon', MON[state.lang][m.getUTCMonth()].replace('.', '')); lb.style.left = ((m.getTime() + nx) / 2 - t0) / span * 100 + '%'; ax.appendChild(lb);
+    }
+    b.items.forEach(function (it, i) {
+      var left = Math.min(97, Math.max(3, (ts[i] - t0) / span * 100)), row = i % 3, h = row * 26;
+      var pin = el('div', 'tl-pin' + (it.hot ? ' hot' : '')); pin.style.left = left + '%'; pin.style.top = h + 'px';
+      pin.appendChild(el('div', 'b', String(i + 1)));
+      var stem = el('div', 's'); stem.style.height = (112 - 26 - 22 - h - 5) + 'px'; pin.appendChild(stem); pin.appendChild(el('div', 'd'));
+      ax.appendChild(pin);
+    });
+    w.appendChild(ax);
+    var ol = el('ol', 'tl-list');
+    b.items.forEach(function (it, i) { var li = el('li', it.hot ? 'hot' : ''); li.appendChild(el('span', 'n', String(i + 1))); li.appendChild(el('span', 'dt', shortDate(it.d))); var h = el('span'); cites(h, it.h); li.appendChild(h); ol.appendChild(li); });
+    w.appendChild(ol); return w;
+  }
+  function figCompare(b) {
+    var w = el('div', 'cmp');
+    var c1 = el('div', 'cmp-col'); c1.appendChild(el('div', 'kick', b.bt));
+    var r1 = el('div', 'cmp-row'); r1.appendChild(el('span', 'chip', b.bn[0])); r1.appendChild(el('span', 'arr', '→')); r1.appendChild(el('span', 'chip closed', b.bn[1])); c1.appendChild(r1);
+    var n1 = el('div', 'note'); cites(n1, b.bnote); c1.appendChild(n1); w.appendChild(c1);
+    var c2 = el('div', 'cmp-col now'); c2.appendChild(el('div', 'kick', b.at));
+    var r2 = el('div', 'cmp-row'); var st = el('div', 'cmp-stack'); b.engines.forEach(function (e) { st.appendChild(el('span', 'chip', e)); });
+    r2.appendChild(st); r2.appendChild(el('span', 'arr', '→')); r2.appendChild(el('span', 'chip cat', b.cat)); r2.appendChild(el('span', 'arr', '→')); r2.appendChild(el('span', 'chip open', b.tab)); c2.appendChild(r2);
+    var n2 = el('div', 'note'); cites(n2, b.anote); c2.appendChild(n2); w.appendChild(c2); return w;
+  }
+  function figMatrix(b) {
+    var w = el('div', 'mx'); var h = el('div', 'mx-r mx-h'); b.head.forEach(function (x) { h.appendChild(el('span', null, x)); }); w.appendChild(h);
+    b.rows.forEach(function (r) {
+      var row = el('div', 'mx-r'); var c1 = el('span', 'cell', r.k); var c2 = el('span', 'cell'); c2.appendChild(el('span', 'st ' + r.s, r.st)); var c3 = el('span', 'cell'); cites(c3, r.src);
+      row.appendChild(c1); row.appendChild(c2); row.appendChild(c3); w.appendChild(row);
+    });
+    return w;
+  }
+  function figFlow(b) {
+    var ol = el('ol', 'flow'); var prep = b.prep || 0;
+    b.steps.forEach(function (s, i) { var li = el('li', i < prep ? 'prep' : ''); li.appendChild(el('span', 'no', (i < prep ? b.prepLabel : b.rollLabel) + ' ' + (i < prep ? i + 1 : i - prep + 1))); li.appendChild(el('span', null, s)); ol.appendChild(li); });
+    return ol;
+  }
+
   function renderPost(p) {
     var t = UI[state.lang]; seq = 0;
     view.textContent = '';
@@ -544,6 +1143,10 @@ footer a { color: var(--dim); }
     var prose = el('article', 'prose');
     L(p.body).forEach(function (b) {
       if (b.t === 'h2') prose.appendChild(el('h2', null, b.x));
+      else if (b.t === 'timeline') prose.appendChild(figure(b, figTimeline(b)));
+      else if (b.t === 'compare') prose.appendChild(figure(b, figCompare(b)));
+      else if (b.t === 'matrix') prose.appendChild(figure(b, figMatrix(b)));
+      else if (b.t === 'flow') prose.appendChild(figure(b, figFlow(b)));
       else if (b.t === 'ul') { var ul = el('ul'); b.x.forEach(function (i) { var li = el('li'); cites(li, i); ul.appendChild(li); }); prose.appendChild(ul); }
       else { var pp = el('p'); cites(pp, b.x); prose.appendChild(pp); }
     });
