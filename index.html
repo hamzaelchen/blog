@@ -3,14 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0a0b0c">
-<meta name="description" content="Data, AI and tech news, explained clearly and sourced. Three posts a week by Hamza El Alami.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog Hamza El Alami">
-<meta property="og:description" content="Data, AI and tech news, explained clearly and sourced. Three posts a week.">
-<style>html{background:#0a0b0c}</style>
 <title>Blog Hamza El Alami</title>
+<meta name="description" content="Data, cloud et IA : analyses sourcées par Hamza El Alami.">
+<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
@@ -210,10 +205,18 @@ h1 .hl { color: var(--accent); }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: var(--r-pill); font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--accent); color: var(--accent); background: none; cursor: pointer; transition: background .2s, color .2s; }
 .btn:hover { background: var(--accent); color: var(--on-accent); }
 
+.fig svg{display:block;width:100%;height:auto}
+.sv text{font-family:var(--mono);font-size:13px;fill:var(--body);letter-spacing:.02em}
+.sv .t{fill:var(--text)}.sv .m{fill:var(--mute)}.sv .a{fill:var(--accent)}.sv .oa{fill:var(--on-accent);font-weight:500}
+.sv .bar{fill:var(--surface-2);stroke:var(--line-2)}.sv .bar.a{fill:var(--accent);stroke:none}
+.sv .ln{stroke:var(--line-2);fill:none;stroke-width:1.5}.sv .la{stroke:var(--accent);fill:none;stroke-width:2.5}
+.sv .box{fill:var(--bg);stroke:var(--line-2)}.sv .boxd{fill:var(--bg);stroke:var(--line-2);stroke-dasharray:5 5}.sv .boxa{fill:var(--accent);stroke:none}
+.fig .svwrap{overflow-x:auto}
 footer { margin-top: 64px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--mute); }
 footer a { color: var(--dim); }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
+
 </head>
 <body>
 <div class="progress" id="progress" aria-hidden="true"></div>
@@ -240,6 +243,468 @@ footer a { color: var(--dim); }
 
 <!-- Posts. Newest first. Add a new object at the top of the array. Each text field has fr and en. Blocks: h2, p, ul. Cite sources in text with [n]. -->
 <script type="application/json" id="posts">[
+ {
+  "id": "kimi-k3-1-decrypte",
+  "date": "2026-10-28",
+  "tag": {
+   "fr": "Actu IA",
+   "en": "AI news"
+  },
+  "minutes": 9,
+  "title": {
+   "fr": "La Chine sort un modèle IA que personne n'arrive à expliquer",
+   "en": "China shipped an AI model nobody can explain"
+  },
+  "summary": {
+   "fr": "Kimi K3.1 est open-weight, il pèse 3 000 milliards de paramètres et il frôle les meilleurs modèles américains. Voici ce qui est solide, ce qui est discuté, et ce que tu peux en faire.",
+   "en": "Kimi K3.1 is open-weight, has 3 trillion parameters and nearly matches the best American models. Here is what is solid, what is disputed, and what you can do with it."
+  },
+  "body": {
+   "fr": [
+    {
+     "t": "h2",
+     "x": "À lire avant de partager"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "La vidéo de Fireship est satirique : le test du cheval 3D est un jeu, pas une évaluation.[1]",
+      "Sur la distillation, ce sont des allégations et des déclarations d'entreprises, pas des faits jugés.[7]",
+      "Les scores de Moonshot sont ceux de Moonshot. Je les compare à des mesures indépendantes quand elles existent.[2][5]"
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Le modèle mystère « Kibitz »"
+    },
+    {
+     "t": "p",
+     "x": "Le 22 octobre, un modèle anonyme nommé « Kibitz » apparaît sur l'Arena, où des internautes comparent des modèles à l'aveugle. Il impressionne en code, en dessin JavaScript et en 3D, et personne ne sait qui l'a entraîné.[8] Le mot est yiddish : il désigne le spectateur qui souffle des conseils par-dessus l'épaule des joueurs d'échecs. Fireship plaisante en disant que tout le monde a pensé à Kimi parce que les deux mots commencent par « Ki ».[1]"
+    },
+    {
+     "t": "p",
+     "x": "Le lendemain, 23 octobre, Moonshot AI confirme : voici Kimi K3.1 Pro, une version post-entraînée de Kimi K3 (juillet) avec environ 3 000 milliards de paramètres. Il est disponible tout de suite par API, et les poids ouverts sont annoncés pour le 4 novembre.[2][3][4] Seule une petite partie du réseau travaille à chaque requête : 16 sous-réseaux actifs sur 896, ce qui limite le coût.[4]"
+    },
+    {
+     "t": "h2",
+     "x": "La distillation, expliquée simplement"
+    },
+    {
+     "t": "p",
+     "x": "Distiller un modèle, c'est entraîner un « élève » à imiter un « professeur » à partir de ses réponses. Entre les mains de son propriétaire, c'est une technique courante. Anthropic dénonce un autre usage : des réseaux de faux comptes qui interrogent Claude en masse pour récupérer ses réponses, et surtout son raisonnement écrit, afin d'entraîner un modèle concurrent.[7]"
+    },
+    {
+     "t": "svg",
+     "cap": "Le mécanisme décrit par Anthropic. Ce sont ses allégations, pas des faits jugés.[7]",
+     "svg": "<svg class=\"sv\" viewBox=\"0 0 600 270\" role=\"img\" aria-label=\"Distillation\"><rect x=\"10\" y=\"90\" width=\"150\" height=\"70\" rx=\"10\" class=\"box\"/><text x=\"85\" y=\"122\" class=\"t\" text-anchor=\"middle\">Modèle professeur</text><text x=\"85\" y=\"142\" class=\"m\" text-anchor=\"middle\">ex. Claude</text><rect x=\"225\" y=\"20\" width=\"150\" height=\"70\" rx=\"10\" class=\"boxd\"/><text x=\"300\" y=\"52\" class=\"t\" text-anchor=\"middle\">Faux comptes</text><text x=\"300\" y=\"72\" class=\"m\" text-anchor=\"middle\">≈ 24 000</text><rect x=\"440\" y=\"90\" width=\"150\" height=\"70\" rx=\"10\" class=\"boxa\"/><text x=\"515\" y=\"122\" class=\"oa\" text-anchor=\"middle\">Modèle élève</text><text x=\"515\" y=\"142\" class=\"oa\" text-anchor=\"middle\">entraîné dessus</text><path class=\"la\" d=\"M160 110 L225 65 M217 66 L225 65 L222 73\"/><path class=\"la\" d=\"M375 65 L440 110 M432 105 L440 110 L440 101\"/><rect x=\"150\" y=\"190\" width=\"300\" height=\"56\" rx=\"10\" class=\"boxd\"/><text x=\"300\" y=\"214\" class=\"t\" text-anchor=\"middle\">Défenses du 12 oct. : −90 à −99 %</text><text x=\"300\" y=\"234\" class=\"m\" text-anchor=\"middle\">estimation d'Anthropic</text></svg>"
+    },
+    {
+     "t": "p",
+     "x": "En février 2026, Anthropic dit avoir relevé plus de 16 millions d'échanges via environ 24 000 comptes frauduleux, et nomme DeepSeek, Moonshot et MiniMax. Un rapport de septembre cite sept labos chinois.[7] Je n'ai pas trouvé de réponse de Moonshot dans les sources lues. En juillet, la Maison-Blanche a aussi accusé Moonshot d'avoir copié un modèle d'Anthropic et utilisé des puces interdites, sans publier de preuves.[3]"
+    },
+    {
+     "t": "h2",
+     "x": "Le paradoxe"
+    },
+    {
+     "t": "p",
+     "x": "Le 12 octobre, Anthropic annonce de nouvelles défenses : depuis son classifieur, les tokens de raisonnement extraits seraient 10 à 100 fois moins nombreux, soit 90 à 99 % de moins.[7] Attention à ce que ça mesure : une estimation d'Anthropic, sur sa propre plateforme, sans vérification indépendante. L'entreprise s'attend d'ailleurs à un jeu du chat et de la souris.[7]"
+    },
+    {
+     "t": "p",
+     "x": "D'où la question de Fireship. Si les labos américains expliquent le rattrapage chinois par la copie, et si cette copie est bloquée à 90-99 %, comment Kimi K3.1 arrive-t-il si près ? Plusieurs lectures restent possibles : une extraction faite avant les défenses, d'autres techniques d'entraînement, ou des chiffres qui ne couvrent qu'une partie du problème. Aucune source lue ne tranche. Cette liste est mon raisonnement, pas un fait."
+    },
+    {
+     "t": "p",
+     "x": "L'autre volet est éthique. Fireship rappelle que ces entreprises ont elles-mêmes absorbé le savoir humain : blogs, GitHub, articles scientifiques et livres. Précision utile sur « Project Panama » : d'après des pièces de justice, Anthropic a acheté des livres par lots, coupé les reliures, numérisé les pages puis recyclé le papier. En juin 2025, un juge a estimé que former une IA sur des livres achetés légalement relevait du fair use, en traitant à part les livres piratés. Anthropic a accepté 1,5 milliard de dollars pour régler le recours collectif.[9]"
+    },
+    {
+     "t": "h2",
+     "x": "Les benchmarks : un point d'écart, selon qui mesure"
+    },
+    {
+     "t": "p",
+     "x": "Sur Terminal-Bench 4.0, qui teste des agents de code dans un terminal, Kimi K3.1 Pro est à environ un point d'Opus 5.5. Mais le chiffre bouge selon qui mesure et avec quel harness, l'environnement qui lance l'agent avec ses outils et ses limites. Même modèle, trois mesures, plus de trois points d'écart.[2][4][5]"
+    },
+    {
+     "t": "svg",
+     "cap": "Terminal-Bench 4.0, trois mesures. Axe tronqué de 60 à 70 %, à lire avec prudence.[2][3][5]",
+     "svg": "<svg class=\"sv\" viewBox=\"0 0 600 260\" role=\"img\" aria-label=\"Terminal-Bench 4.0\"><text x=\"40\" y=\"20\" class=\"t\" text-anchor=\"start\">Moonshot (éditeur)</text><path class=\"ln\" d=\"M40 42 H560\"/><circle cx=\"372.8\" cy=\"42\" r=\"8\" class=\"bar\"/><circle cx=\"336.4\" cy=\"42\" r=\"8\" fill=\"#d4ff3a\"/><text x=\"40\" y=\"70\" class=\"a\" text-anchor=\"start\">Kimi 65.7%</text><text x=\"560\" y=\"70\" class=\"m\" text-anchor=\"end\">Opus 5.5 66.4%</text><text x=\"40\" y=\"90\" class=\"t\" text-anchor=\"start\">Vals AI (mini-SWE-agent)</text><path class=\"ln\" d=\"M40 112 H560\"/><circle cx=\"307.8\" cy=\"112\" r=\"8\" class=\"bar\"/><circle cx=\"229.3\" cy=\"112\" r=\"8\" fill=\"#d4ff3a\"/><text x=\"40\" y=\"140\" class=\"a\" text-anchor=\"start\">Kimi 63.64%</text><text x=\"560\" y=\"140\" class=\"m\" text-anchor=\"end\">Opus 5.5 65.15%</text><text x=\"40\" y=\"160\" class=\"t\" text-anchor=\"start\">Artificial Analysis</text><path class=\"ln\" d=\"M40 182 H560\"/><circle cx=\"248.0\" cy=\"182\" r=\"8\" class=\"bar\"/><circle cx=\"404.0\" cy=\"182\" r=\"8\" fill=\"#d4ff3a\"/><text x=\"40\" y=\"210\" class=\"a\" text-anchor=\"start\">Kimi 67%</text><text x=\"560\" y=\"210\" class=\"m\" text-anchor=\"end\">Sonnet 5.5 64%</text><text x=\"40\" y=\"254\" class=\"m\" text-anchor=\"start\">60%</text><text x=\"560\" y=\"254\" class=\"m\" text-anchor=\"end\">70%</text></svg>"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Terminal-Bench 4.0 (Vals AI) : Kimi 63,64 % (3e sur 56) ; Opus 5.5 65,15 % ; Sonnet 5.5 64,14 %",
+      "SWE-Marathon (Éditeur) : Kimi 51,7 ; Opus 5.5 46,3 ; GPT-6 Astra 42,5",
+      "Terminal-Bench Science 0.1 (Éditeur) : Kimi 38,1 ; Opus 5.5 63,3 ; GPT-6 Astra 68,1",
+      "ProgramBench (Éditeur) : Kimi 31,5 % ; Opus 5.5 65,0 %",
+      "Humanity's Last Exam (Artificial Analysis) : Kimi 52 % ; Opus 5.5 61 %"
+     ]
+    },
+    {
+     "t": "p",
+     "x": "Autres scores. Les lignes marquées « éditeur » viennent de Moonshot et n'ont pas été vérifiées de façon indépendante.[3][10]"
+    },
+    {
+     "t": "p",
+     "x": "Lis ce tableau en entier : Kimi gagne sur SWE-Marathon, des tâches logicielles longues, mais il est loin derrière sur ProgramBench et sur Terminal-Bench Science.[2][10] Fireship dit que le 67 % d'Artificial Analysis est le meilleur de tous les modèles testés ; sur Vals AI, Kimi est 3e, derrière Opus 5.5 et Sonnet 5.5.[1][5] Je n'ai pas pu confirmer le classement complet d'Artificial Analysis."
+    },
+    {
+     "t": "h2",
+     "x": "Cybersécurité bridée et géopolitique"
+    },
+    {
+     "t": "p",
+     "x": "Moonshot dit avoir retiré des données liées à l'attaque informatique de l'entraînement et filtré des tâches d'apprentissage par renforcement avant la sortie ouverte.[2][3] Sur son test interne d'exploitation de failles réelles, une version non filtrée résout 90,5 % des problèmes en trois essais. Le modèle publié en résout 81 %, contre 33,3 % pour K3.[2][3]"
+    },
+    {
+     "t": "p",
+     "x": "Fireship relie ce choix à l'interdiction de DeepSeek dans les agences fédérales américaines : ne pas donner de prétexte pour bannir tous les modèles chinois.[1][11] C'est son interprétation. Moonshot, elle, parle de limiter les risques d'une publication ouverte, qu'on ne peut plus rappeler une fois téléchargée.[3]"
+    },
+    {
+     "t": "p",
+     "x": "Côté défense, Artificial Analysis mesure un index cyber qui exclut la construction d'exploits : Kimi K3.1 Pro obtient 64 %, devant DeepSeek V4.1 Flash (57 %) et K3 (41 %). Seule la configuration à accès de confiance de GPT-6 Sol fait mieux, avec 69 %.[6] Une partie de l'écart vient des refus : des modèles d'OpenAI, d'Anthropic et de Google ont refusé certaines requêtes de sécurité, alors que Kimi n'en a refusé aucune. Fireship dit « tous » les prompts. La source dit « certains ».[6]"
+    },
+    {
+     "t": "h2",
+     "x": "Le test du cheval 3D (et son benchmark inventé)"
+    },
+    {
+     "t": "p",
+     "x": "Fireship demande à chaque modèle de créer un cheval 3D réaliste et interactif avec Three.js, puis note le résultat sur 10 à l'œil. Il appelle ça « Thoroughbench ». C'est un benchmark humoristique inventé pour la vidéo, subjectif, sans valeur scientifique.[1]"
+    },
+    {
+     "t": "svg",
+     "cap": "Notes de Thoroughbench sur 10, telles que rapportées par la vidéo. Subjectif et humoristique : ce n'est pas une évaluation officielle.[1]",
+     "svg": "<svg class=\"sv\" viewBox=\"0 0 600 228\" role=\"img\" aria-label=\"Thoroughbench\"><text x=\"20\" y=\"24\" class=\"t\" text-anchor=\"start\">Opus</text><rect class=\"bar\" x=\"20\" y=\"32\" width=\"255.6\" height=\"18\" rx=\"4\"/><text x=\"285.6\" y=\"46\" class=\"t\" text-anchor=\"start\">6.39</text><text x=\"20\" y=\"76\" class=\"t\" text-anchor=\"start\">GPT-6 Astra</text><rect class=\"bar\" x=\"20\" y=\"84\" width=\"208.4\" height=\"18\" rx=\"4\"/><text x=\"238.4\" y=\"98\" class=\"t\" text-anchor=\"start\">5.21</text><text x=\"20\" y=\"128\" class=\"t\" text-anchor=\"start\">Kimi K3.1</text><rect class=\"bar a\" x=\"20\" y=\"136\" width=\"168.0\" height=\"18\" rx=\"4\"/><text x=\"198.0\" y=\"150\" class=\"t\" text-anchor=\"start\">4.20</text><text x=\"20\" y=\"180\" class=\"t\" text-anchor=\"start\">Google Argon</text><rect class=\"bar\" x=\"20\" y=\"188\" width=\"27.6\" height=\"18\" rx=\"4\"/><text x=\"57.6\" y=\"202\" class=\"t\" text-anchor=\"start\">0.69</text></svg>"
+    },
+    {
+     "t": "p",
+     "x": "Kimi produit le plus joli cheval : couleurs justes, rendu réaliste. Mais son animation est mauvaise, car il déforme directement le maillage d'origine, un peu comme on étire une sculpture en argile. Claude construit un vrai squelette : un maillage d'environ 95 000 sommets relié à 35 os qui bougent indépendamment, et la peau suit. Gemini utilise aussi des os, avec un os en trop.[1]"
+    },
+    {
+     "t": "svg",
+     "cap": "Déformer un maillage ou animer un squelette : schéma simplifié, pas le rendu réel des modèles.[1]",
+     "svg": "<svg class=\"sv\" viewBox=\"0 0 600 250\" role=\"img\" aria-label=\"mesh vs skeleton\"><text x=\"150\" y=\"22\" class=\"m\" text-anchor=\"middle\">Déformer le maillage</text><path class=\"ln\" d=\"M70 50 L80 190\"/><path class=\"ln\" d=\"M99 50 L109 190\"/><path class=\"ln\" d=\"M128 50 L138 190\"/><path class=\"ln\" d=\"M157 50 L167 190\"/><path class=\"ln\" d=\"M186 50 L196 190\"/><path class=\"ln\" d=\"M215 50 L225 190\"/><path class=\"ln\" d=\"M244 50 L254 190\"/><path class=\"ln\" d=\"M70 50 L240 60\"/><path class=\"ln\" d=\"M70 85 L240 95\"/><path class=\"ln\" d=\"M70 120 L240 130\"/><path class=\"ln\" d=\"M70 155 L240 165\"/><path class=\"ln\" d=\"M70 190 L240 200\"/><text x=\"450\" y=\"22\" class=\"a\" text-anchor=\"middle\">Animer un squelette</text><path class=\"la\" d=\"M360 80 L400 100 L450 100 L500 92 L540 65 M400 100 L392 160 L388 195 M450 100 L458 160 L465 195 M500 92 L508 155 L515 195\"/><circle cx=\"360\" cy=\"80\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"400\" cy=\"100\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"450\" cy=\"100\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"500\" cy=\"92\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"540\" cy=\"65\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"392\" cy=\"160\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"458\" cy=\"160\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"508\" cy=\"155\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"388\" cy=\"195\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"465\" cy=\"195\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"515\" cy=\"195\" r=\"5\" fill=\"#d4ff3a\"/><text x=\"150\" y=\"230\" class=\"m\" text-anchor=\"middle\">Tout s'étire d'un bloc</text><text x=\"450\" y=\"230\" class=\"m\" text-anchor=\"middle\">Chaque os bouge, la peau suit</text></svg>"
+    },
+    {
+     "t": "p",
+     "x": "La leçon dépasse le cheval : une belle démo n'est pas une bonne ingénierie. Notons que Moonshot revendique 92,7 % sur BenchCAD, un test de code pour la modélisation 3D.[4]"
+    },
+    {
+     "t": "h2",
+     "x": "Ce que ça change pour les développeurs et les data engineers"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Le prix : 2 $ l'entrée et 10 $ la sortie par million de tokens, contre 4 $ et 20 $ pour Opus 5.5 et 2 $ et 10 $ pour Sonnet 5.5.[2] Sur l'index d'Artificial Analysis, le coût par tâche est d'environ 2 $ contre environ 6 $ pour Opus 5.5.[2]",
+      "Les poids ne sont pas encore téléchargeables : pas d'auto-hébergement avant le 4 novembre, et la licence n'est pas précisée dans les sources lues.[2][10] L'API cite des serveurs à Singapour dans sa politique de confidentialité : vérifie la conformité de tes données.[2]",
+      "Les benchmarks ne remplacent pas ton cas d'usage. Le test du cheval le montre : valide sur tes tâches, avec le même harness pour tous les modèles.[2]",
+      "Traite un modèle ouvert comme un logiciel téléchargé. En août, K3 a été mis en cause après avoir quitté la sandbox d'un test pour chercher les réponses d'un benchmark en ligne.[3] Isole tes agents."
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Ton plan pour cette semaine"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Note 10 à 20 tâches réelles de ton travail : SQL, nettoyage de données, documentation, correction de bugs.",
+      "Lance-les sur trois modèles avec le même harness et compare qualité, temps et coût par tâche.[2]",
+      "Attends les poids du 4 novembre et lis la licence avant tout projet sérieux.[3]",
+      "Fais tourner l'agent dans une sandbox à réseau fermé par défaut, et relis les appels bloqués."
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Limites"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Les passages tirés de la vidéo (blague « Ki », scores de Thoroughbench, abonnement à 250 yuans par mois) n'ont pas pu être recoupés avec une autre source.[1]",
+      "Les scores de Moonshot sont ceux de l'éditeur, et plusieurs mesures indépendantes divergent.[2][5][10]",
+      "Des captures d'écran non authentifiées évoquent une promotion payante de Kimi par des influenceurs. Rien n'est confirmé et je n'ai pas trouvé de réponse de Moonshot.[2]",
+      "Les poids ne sont pas publiés : tout ce qui touche à l'open-weight reste une annonce jusqu'au 4 novembre.[3]"
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "En bref"
+    },
+    {
+     "t": "p",
+     "x": "La Chine a presque comblé l'écart avec les meilleurs modèles américains sur certains tests, en open-weight, à un prix plus bas. Mais les benchmarks dépendent du harness, la cybersécurité est volontairement réduite, et la démo créative montre encore un écart de qualité. La tension géopolitique devient un facteur de la course."
+    },
+    {
+     "t": "h2",
+     "x": "Et toi ?"
+    },
+    {
+     "t": "p",
+     "x": "Tu ferais confiance à un modèle chinois open-weight ? Réponds en commentaire sur LinkedIn ou Instagram : j'y lis tout."
+    }
+   ],
+   "en": [
+    {
+     "t": "h2",
+     "x": "Read this before sharing"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Fireship's video is satirical: the 3D horse test is a game, not an evaluation.[1]",
+      "On distillation, these are allegations and company statements, not proven facts.[7]",
+      "Moonshot's scores are Moonshot's own. I compare them with independent measurements where they exist.[2][5]"
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "The mystery model \"Kibitz\""
+    },
+    {
+     "t": "p",
+     "x": "On 22 October, an anonymous model called \"Kibitz\" shows up on Arena, where people compare models blind. It impresses in code, JavaScript drawing and 3D, and nobody knows who trained it.[8] The word is Yiddish: it means the onlooker who gives advice over a chess player's shoulder. Fireship jokes that everyone guessed Kimi because both words start with \"Ki\".[1]"
+    },
+    {
+     "t": "p",
+     "x": "The next day, 23 October, Moonshot AI confirms: this is Kimi K3.1 Pro, a post-trained version of Kimi K3 (July) with about 3 trillion parameters. It is available now through the API, and open weights are announced for 4 November.[2][3][4] Only a small part of the network works on each request: 16 active networks out of 896, which keeps costs down.[4]"
+    },
+    {
+     "t": "h2",
+     "x": "Distillation, explained simply"
+    },
+    {
+     "t": "p",
+     "x": "To distill a model is to train a \"student\" to imitate a \"teacher\" from its answers. In its owner's hands, it is a common technique. Anthropic denounces another use: networks of fake accounts that query Claude at scale to collect its answers, and above all its written reasoning, in order to train a rival model.[7]"
+    },
+    {
+     "t": "svg",
+     "cap": "The mechanism Anthropic describes. These are its allegations, not proven facts.[7]",
+     "svg": "<svg class=\"sv\" viewBox=\"0 0 600 270\" role=\"img\" aria-label=\"Distillation\"><rect x=\"10\" y=\"90\" width=\"150\" height=\"70\" rx=\"10\" class=\"box\"/><text x=\"85\" y=\"122\" class=\"t\" text-anchor=\"middle\">Teacher model</text><text x=\"85\" y=\"142\" class=\"m\" text-anchor=\"middle\">e.g. Claude</text><rect x=\"225\" y=\"20\" width=\"150\" height=\"70\" rx=\"10\" class=\"boxd\"/><text x=\"300\" y=\"52\" class=\"t\" text-anchor=\"middle\">Fake accounts</text><text x=\"300\" y=\"72\" class=\"m\" text-anchor=\"middle\">≈ 24 000</text><rect x=\"440\" y=\"90\" width=\"150\" height=\"70\" rx=\"10\" class=\"boxa\"/><text x=\"515\" y=\"122\" class=\"oa\" text-anchor=\"middle\">Student model</text><text x=\"515\" y=\"142\" class=\"oa\" text-anchor=\"middle\">trained on it</text><path class=\"la\" d=\"M160 110 L225 65 M217 66 L225 65 L222 73\"/><path class=\"la\" d=\"M375 65 L440 110 M432 105 L440 110 L440 101\"/><rect x=\"150\" y=\"190\" width=\"300\" height=\"56\" rx=\"10\" class=\"boxd\"/><text x=\"300\" y=\"214\" class=\"t\" text-anchor=\"middle\">Defenses of 12 Oct.: −90 to −99%</text><text x=\"300\" y=\"234\" class=\"m\" text-anchor=\"middle\">Anthropic estimate</text></svg>"
+    },
+    {
+     "t": "p",
+     "x": "In February 2026, Anthropic says it found more than 16 million exchanges through about 24,000 fraudulent accounts, and names DeepSeek, Moonshot and MiniMax. A September report cites seven Chinese labs.[7] I found no reply from Moonshot in the sources I read. In July, the White House also accused Moonshot of copying an Anthropic model and using banned chips, without publishing evidence.[3]"
+    },
+    {
+     "t": "h2",
+     "x": "The paradox"
+    },
+    {
+     "t": "p",
+     "x": "On 12 October, Anthropic announces new defenses: since its classifier, extracted reasoning tokens would be 10 to 100 times lower, which is 90 to 99% less.[7] Mind what this measures: an Anthropic estimate, on its own platform, with no independent check. The company also expects a cat-and-mouse game.[7]"
+    },
+    {
+     "t": "p",
+     "x": "Hence Fireship's question. If American labs explain the Chinese catch-up by copying, and if that copying is blocked at 90-99%, how does Kimi K3.1 get so close? Several readings remain possible: extraction done before the defenses, other training techniques, or figures that cover only part of the problem. No source I read settles it. This list is my own reasoning, not a fact."
+    },
+    {
+     "t": "p",
+     "x": "The other side is ethical. Fireship points out that these companies absorbed human knowledge themselves: blogs, GitHub, scientific papers and books. A useful precision on \"Project Panama\": according to court documents, Anthropic bought books in batches, cut off the spines, scanned the pages and recycled the paper. In June 2025, a judge ruled that training an AI on lawfully purchased books was fair use, treating pirated books separately. Anthropic agreed to $1.5 billion to settle the class action.[9]"
+    },
+    {
+     "t": "h2",
+     "x": "Benchmarks: one point apart, depending on who measures"
+    },
+    {
+     "t": "p",
+     "x": "On Terminal-Bench 4.0, which tests coding agents in a terminal, Kimi K3.1 Pro sits about one point from Opus 5.5. But the figure moves with who measures and with which harness, the environment that runs the agent with its tools and limits. Same model, three measurements, more than three points apart.[2][4][5]"
+    },
+    {
+     "t": "svg",
+     "cap": "Terminal-Bench 4.0, three measurements. Truncated axis from 60 to 70%, read with care.[2][3][5]",
+     "svg": "<svg class=\"sv\" viewBox=\"0 0 600 260\" role=\"img\" aria-label=\"Terminal-Bench 4.0\"><text x=\"40\" y=\"20\" class=\"t\" text-anchor=\"start\">Moonshot (vendor)</text><path class=\"ln\" d=\"M40 42 H560\"/><circle cx=\"372.8\" cy=\"42\" r=\"8\" class=\"bar\"/><circle cx=\"336.4\" cy=\"42\" r=\"8\" fill=\"#d4ff3a\"/><text x=\"40\" y=\"70\" class=\"a\" text-anchor=\"start\">Kimi 65.7%</text><text x=\"560\" y=\"70\" class=\"m\" text-anchor=\"end\">Opus 5.5 66.4%</text><text x=\"40\" y=\"90\" class=\"t\" text-anchor=\"start\">Vals AI (mini-SWE-agent)</text><path class=\"ln\" d=\"M40 112 H560\"/><circle cx=\"307.8\" cy=\"112\" r=\"8\" class=\"bar\"/><circle cx=\"229.3\" cy=\"112\" r=\"8\" fill=\"#d4ff3a\"/><text x=\"40\" y=\"140\" class=\"a\" text-anchor=\"start\">Kimi 63.64%</text><text x=\"560\" y=\"140\" class=\"m\" text-anchor=\"end\">Opus 5.5 65.15%</text><text x=\"40\" y=\"160\" class=\"t\" text-anchor=\"start\">Artificial Analysis</text><path class=\"ln\" d=\"M40 182 H560\"/><circle cx=\"248.0\" cy=\"182\" r=\"8\" class=\"bar\"/><circle cx=\"404.0\" cy=\"182\" r=\"8\" fill=\"#d4ff3a\"/><text x=\"40\" y=\"210\" class=\"a\" text-anchor=\"start\">Kimi 67%</text><text x=\"560\" y=\"210\" class=\"m\" text-anchor=\"end\">Sonnet 5.5 64%</text><text x=\"40\" y=\"254\" class=\"m\" text-anchor=\"start\">60%</text><text x=\"560\" y=\"254\" class=\"m\" text-anchor=\"end\">70%</text></svg>"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Terminal-Bench 4.0 (Vals AI): Kimi 63.64% (3rd of 56); Opus 5.5 65.15%; Sonnet 5.5 64.14%",
+      "SWE-Marathon (Vendor): Kimi 51.7; Opus 5.5 46.3; GPT-6 Astra 42.5",
+      "Terminal-Bench Science 0.1 (Vendor): Kimi 38.1; Opus 5.5 63.3; GPT-6 Astra 68.1",
+      "ProgramBench (Vendor): Kimi 31.5%; Opus 5.5 65.0%",
+      "Humanity's Last Exam (Artificial Analysis): Kimi 52%; Opus 5.5 61%"
+     ]
+    },
+    {
+     "t": "p",
+     "x": "Other scores. Rows marked \"vendor\" come from Moonshot and have not been independently verified.[3][10]"
+    },
+    {
+     "t": "p",
+     "x": "Read the whole table: Kimi wins on SWE-Marathon, long software tasks, but is far behind on ProgramBench and Terminal-Bench Science.[2][10] Fireship says Artificial Analysis's 67% is the best of every model tested; on Vals AI, Kimi is 3rd, behind Opus 5.5 and Sonnet 5.5.[1][5] I could not confirm Artificial Analysis's full ranking."
+    },
+    {
+     "t": "h2",
+     "x": "Capped cybersecurity and geopolitics"
+    },
+    {
+     "t": "p",
+     "x": "Moonshot says it removed cyberattack-related data from training and filtered reinforcement-learning tasks before the open release.[2][3] On its internal test of exploiting real software flaws, an unfiltered version solves 90.5% of problems within three attempts. The released model solves 81%, against 33.3% for K3.[2][3]"
+    },
+    {
+     "t": "p",
+     "x": "Fireship links this choice to the ban on DeepSeek in US federal agencies: do not give a pretext to ban all Chinese models.[1][11] That is his interpretation. Moonshot talks about limiting the risks of an open release, which cannot be recalled once downloaded.[3]"
+    },
+    {
+     "t": "p",
+     "x": "On the defense side, Artificial Analysis measures a cyber index that excludes building exploits: Kimi K3.1 Pro scores 64%, ahead of DeepSeek V4.1 Flash (57%) and K3 (41%). Only GPT-6 Sol's trusted-access configuration does better, at 69%.[6] Part of the gap comes from refusals: models from OpenAI, Anthropic and Google refused some security requests, while Kimi refused none. Fireship says \"all\" prompts. The source says \"some\".[6]"
+    },
+    {
+     "t": "h2",
+     "x": "The 3D horse test (and its invented benchmark)"
+    },
+    {
+     "t": "p",
+     "x": "Fireship asks each model to build a realistic, interactive 3D horse with Three.js, then scores it out of 10 by eye. He calls it \"Thoroughbench\". It is a humorous benchmark invented for the video, subjective, with no scientific value.[1]"
+    },
+    {
+     "t": "svg",
+     "cap": "Thoroughbench scores out of 10, as reported by the video. Subjective and humorous: not an official evaluation.[1]",
+     "svg": "<svg class=\"sv\" viewBox=\"0 0 600 228\" role=\"img\" aria-label=\"Thoroughbench\"><text x=\"20\" y=\"24\" class=\"t\" text-anchor=\"start\">Opus</text><rect class=\"bar\" x=\"20\" y=\"32\" width=\"255.6\" height=\"18\" rx=\"4\"/><text x=\"285.6\" y=\"46\" class=\"t\" text-anchor=\"start\">6.39</text><text x=\"20\" y=\"76\" class=\"t\" text-anchor=\"start\">GPT-6 Astra</text><rect class=\"bar\" x=\"20\" y=\"84\" width=\"208.4\" height=\"18\" rx=\"4\"/><text x=\"238.4\" y=\"98\" class=\"t\" text-anchor=\"start\">5.21</text><text x=\"20\" y=\"128\" class=\"t\" text-anchor=\"start\">Kimi K3.1</text><rect class=\"bar a\" x=\"20\" y=\"136\" width=\"168.0\" height=\"18\" rx=\"4\"/><text x=\"198.0\" y=\"150\" class=\"t\" text-anchor=\"start\">4.20</text><text x=\"20\" y=\"180\" class=\"t\" text-anchor=\"start\">Google Argon</text><rect class=\"bar\" x=\"20\" y=\"188\" width=\"27.6\" height=\"18\" rx=\"4\"/><text x=\"57.6\" y=\"202\" class=\"t\" text-anchor=\"start\">0.69</text></svg>"
+    },
+    {
+     "t": "p",
+     "x": "Kimi makes the prettiest horse: right colors, realistic look. But its animation is poor, because it simply deforms the original mesh, a bit like stretching a clay sculpture. Claude builds a real skeleton: a mesh of about 95,000 vertices tied to 35 bones that move independently, and the skin follows. Gemini also uses bones, with one bone too many.[1]"
+    },
+    {
+     "t": "svg",
+     "cap": "Warping a mesh or animating a skeleton: simplified diagram, not the models' actual output.[1]",
+     "svg": "<svg class=\"sv\" viewBox=\"0 0 600 250\" role=\"img\" aria-label=\"mesh vs skeleton\"><text x=\"150\" y=\"22\" class=\"m\" text-anchor=\"middle\">Warp the mesh</text><path class=\"ln\" d=\"M70 50 L80 190\"/><path class=\"ln\" d=\"M99 50 L109 190\"/><path class=\"ln\" d=\"M128 50 L138 190\"/><path class=\"ln\" d=\"M157 50 L167 190\"/><path class=\"ln\" d=\"M186 50 L196 190\"/><path class=\"ln\" d=\"M215 50 L225 190\"/><path class=\"ln\" d=\"M244 50 L254 190\"/><path class=\"ln\" d=\"M70 50 L240 60\"/><path class=\"ln\" d=\"M70 85 L240 95\"/><path class=\"ln\" d=\"M70 120 L240 130\"/><path class=\"ln\" d=\"M70 155 L240 165\"/><path class=\"ln\" d=\"M70 190 L240 200\"/><text x=\"450\" y=\"22\" class=\"a\" text-anchor=\"middle\">Animate a skeleton</text><path class=\"la\" d=\"M360 80 L400 100 L450 100 L500 92 L540 65 M400 100 L392 160 L388 195 M450 100 L458 160 L465 195 M500 92 L508 155 L515 195\"/><circle cx=\"360\" cy=\"80\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"400\" cy=\"100\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"450\" cy=\"100\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"500\" cy=\"92\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"540\" cy=\"65\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"392\" cy=\"160\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"458\" cy=\"160\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"508\" cy=\"155\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"388\" cy=\"195\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"465\" cy=\"195\" r=\"5\" fill=\"#d4ff3a\"/><circle cx=\"515\" cy=\"195\" r=\"5\" fill=\"#d4ff3a\"/><text x=\"150\" y=\"230\" class=\"m\" text-anchor=\"middle\">Everything stretches as one</text><text x=\"450\" y=\"230\" class=\"m\" text-anchor=\"middle\">Each bone moves, skin follows</text></svg>"
+    },
+    {
+     "t": "p",
+     "x": "The lesson goes beyond the horse: a nice demo is not good engineering. Note that Moonshot claims 92.7% on BenchCAD, a code test for 3D modeling.[4]"
+    },
+    {
+     "t": "h2",
+     "x": "What it changes for developers and data engineers"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Price: $2 input and $10 output per million tokens, against $4 and $20 for Opus 5.5 and $2 and $10 for Sonnet 5.5.[2] On Artificial Analysis's index, cost per task is about $2 against about $6 for Opus 5.5.[2]",
+      "The weights are not downloadable yet: no self-hosting before 4 November, and the license is not specified in the sources I read.[2][10] The API privacy policy cites servers in Singapore: check compliance for your data.[2]",
+      "Benchmarks do not replace your use case. The horse test shows it: validate on your own tasks, with the same harness for every model.[2]",
+      "Treat an open model like downloaded software. In August, K3 drew scrutiny after leaving a test sandbox to look up a benchmark's answers online.[3] Isolate your agents."
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Your plan for this week"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Write down 10 to 20 real tasks from your work: SQL, data cleaning, documentation, bug fixing.",
+      "Run them on three models with the same harness and compare quality, time and cost per task.[2]",
+      "Wait for the 4 November weights and read the license before any serious project.[3]",
+      "Run the agent in a sandbox with the network closed by default, and read the blocked calls."
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "Limits"
+    },
+    {
+     "t": "ul",
+     "x": [
+      "Passages taken from the video (the \"Ki\" joke, Thoroughbench scores, the 250 yuan monthly plan) could not be cross-checked with another source.[1]",
+      "Moonshot's scores are the vendor's own, and several independent measurements differ.[2][5][10]",
+      "Unauthenticated screenshots point to a paid Kimi promotion by influencers. Nothing is confirmed and I found no reply from Moonshot.[2]",
+      "The weights are not published: everything about open-weight remains an announcement until 4 November.[3]"
+     ]
+    },
+    {
+     "t": "h2",
+     "x": "In short"
+    },
+    {
+     "t": "p",
+     "x": "China has nearly closed the gap with the best American models on some tests, in open-weight, at a lower price. But benchmarks depend on the harness, cybersecurity is deliberately reduced, and the creative demo still shows a quality gap. Geopolitical tension is becoming a factor in the race."
+    },
+    {
+     "t": "h2",
+     "x": "What about you?"
+    },
+    {
+     "t": "p",
+     "x": "Would you trust an open-weight Chinese model? Answer in the comments on LinkedIn or Instagram: I read everything."
+    }
+   ]
+  },
+  "sources": [
+   {
+    "title": "China just dropped a new frontier model... and nobody can explain how",
+    "publisher": "Fireship (The Code Report), YouTube",
+    "date": "2026-10-26",
+    "url": "https://www.youtube.com/watch?v=G_em1hHPnXY"
+   },
+   {
+    "title": "Moonshot's Kimi K3.1 Pro flirts with open weights leadership amid paid influencer scandal allegations",
+    "publisher": "VentureBeat",
+    "date": "2026-10-24",
+    "url": "https://venturebeat.com/technology/moonshots-kimi-k3-1-pro-flirts-with-open-weights-leadership-amid-paid-influencer-scandal-allegations"
+   },
+   {
+    "title": "Moonshot releases Kimi K3.1 Pro and says it cut its hacking skills",
+    "publisher": "The Next Web",
+    "date": "2026-10-23",
+    "url": "https://thenextweb.com/news/moonshot-kimi-k3-1-pro-open-weight-cyber"
+   },
+   {
+    "title": "Moonshot AI launches new flagship Kimi K3.1 Pro model with 3T parameters",
+    "publisher": "SiliconANGLE",
+    "date": "2026-10-23",
+    "url": "https://siliconangle.com/2026/10/23/moonshot-ai-launches-new-flagship-kim-k3-1-pro-model-with-3t-parameters/"
+   },
+   {
+    "title": "Terminal-Bench 4.0 Leaderboard and Methodology",
+    "publisher": "Vals AI (independent leaderboard, harness mini-SWE-agent)",
+    "date": "2026-10-26",
+    "url": "https://www.vals.ai/benchmarks/terminal-bench-4"
+   },
+   {
+    "title": "Moonshot's Kimi K3.1 Pro Tops Every Public API Model in Security Benchmarks (Artificial Analysis Cyber Index)",
+    "publisher": "AlphaSignal",
+    "date": "2026-10 (undated page)",
+    "url": "https://alphasignal.ai/news/moonshot-s-kimi-k3-1-pro-tops-every-public-api-model-in-security-benchmarks"
+   },
+   {
+    "title": "Anthropic reports distillation defenses reduced extracted reasoning tokens",
+    "publisher": "Unite.AI (reporting Anthropic's post of 12 Oct 2026)",
+    "date": "2026-10",
+    "url": "https://www.unite.ai/anthropic-reports-distillation-defenses-reduced-extracted-reasoning-tokens/"
+   },
+   {
+    "title": "Kimi K3.1 is prepared for upcoming release after Arena testing",
+    "publisher": "TestingCatalog",
+    "date": "2026-10-23",
+    "url": "https://www.testingcatalog.com/kimi-k3-1-spotted-testing-arena/"
+   },
+   {
+    "title": "Project Panama: how Anthropic secretly destroyed millions of books to train its AI",
+    "publisher": "Euronews",
+    "date": "2026-08-05",
+    "url": "https://www.euronews.com/2026/08/05/project-panama-how-anthropic-secretly-destroyed-millions-of-books-to-train-its-ai"
+   },
+   {
+    "title": "Kimi K3.1 Pro: Benchmarks, Pricing, and How to Access It",
+    "publisher": "DataCamp (vendor-reported scores)",
+    "date": "2026-10-26",
+    "url": "https://www.datacamp.com/blog/kimi-k3-1-pro"
+   },
+   {
+    "title": "Cohere says Alibaba's Qwen model tried to send a file to Beijing",
+    "publisher": "TechCrunch (mentions the DHS order on DeepSeek)",
+    "date": "2026-10-26",
+    "url": "https://techcrunch.com/2026/10/26/cohere-says-alibabas-qwen-model-tried-to-send-a-file-to-beijing/"
+   }
+  ],
+  "carousel": ""
+ },
  {
   "id": "open-tables-any-engine",
   "date": "2026-10-26",
@@ -776,7 +1241,7 @@ footer a { color: var(--dim); }
     "url": "https://dev.to/alexmercedcoder/apache-data-lakehouse-weekly-september-29-to-october-7-2026-42im"
    }
   ],
-  "carousel": ""
+  "carousel": "https://claude.ai/artifact/7MgrVw8KyBedYj93scoWRA"
  },
  {
   "id": "why-this-blog",
@@ -1131,6 +1596,8 @@ footer a { color: var(--dim); }
     return ol;
   }
 
+  function figSvg(b) { var w = el('div', 'svwrap'); w.innerHTML = b.svg; return w; }
+
   function renderPost(p) {
     var t = UI[state.lang]; seq = 0;
     view.textContent = '';
@@ -1147,6 +1614,7 @@ footer a { color: var(--dim); }
       else if (b.t === 'compare') prose.appendChild(figure(b, figCompare(b)));
       else if (b.t === 'matrix') prose.appendChild(figure(b, figMatrix(b)));
       else if (b.t === 'flow') prose.appendChild(figure(b, figFlow(b)));
+      else if (b.t === 'svg') prose.appendChild(figure(b, figSvg(b)));
       else if (b.t === 'ul') { var ul = el('ul'); b.x.forEach(function (i) { var li = el('li'); cites(li, i); ul.appendChild(li); }); prose.appendChild(ul); }
       else { var pp = el('p'); cites(pp, b.x); prose.appendChild(pp); }
     });
@@ -1198,5 +1666,8 @@ footer a { color: var(--dim); }
   render();
 })();
 </script>
+
+
+
 </body>
 </html>
